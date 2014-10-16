@@ -12,7 +12,7 @@ import Control.Monad
 
 data TypeError = TypeMismatch Type Type
                | OccursCheckFailed Id Type
-               | NoSuchVariable Id
+               | NoSuchVariabel Id
                | NoSuchConstructor Id
                | MalformedAlternatives
                | ForallInLetfun
