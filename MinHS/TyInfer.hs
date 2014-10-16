@@ -90,19 +90,30 @@ unquantify' i s (Forall x t) = do x' <- fresh
                                               (substQType (x =:TypeVar (show i)) t)
 
 unify :: Type -> Type -> TC Subst
-unify = error "implement me"
+unify = error "implement unify!"
 
 generalise :: Gamma -> Type -> QType
-generalise g t = error "implement me"
+generalise g t = error "implement generalse!"
 
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
-inferProgram env bs = error "implement me! don't forget to run the result substitution on the"
-                            "entire expression using allTypes from Syntax.hs"
+inferProgram gamma [Bind id Nothing [] expr] = 
+    do  (expr', t , s) <-inferExp gamma expr 
+        return ([Bind id (Just (Ty t)) [] expr' ], t, s)
+
+
+--inferProgram env [Bind "main" Nothing [] (Num n)] = return $ (([Bind "main" (Just (Ty (Base Int))) [] (Num n)]), (Base Int), ([("main", Num)]))  
+
+
+
+--error("Spotted!")
+inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env) ++ "<--- program is --->" ++ (show bs)) 
+--don't forget to run the result substitution on the entire expression using allTypes from Syntax.hs"
 
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
-inferExp g _ = error "Implement me!"
+inferExp g _ = error "Implement inferExp!"
 -- -- Note: this is the only case you need to handle for case expressions
 -- inferExp g (Case e [Alt "Inl" [x] e1, Alt "Inr" [y] e2])
 -- inferExp g (Case e _) = typeError MalformedAlternatives
 
 
+ 

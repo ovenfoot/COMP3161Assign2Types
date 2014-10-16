@@ -1,0 +1,733 @@
+Running test: zz_more_tests/complex_exprs/010.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/complex_exprs/ifTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/advanced_polymorphic/003.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/advanced_polymorphic/001.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/advanced_polymorphic/004.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/advanced_polymorphic/012.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/polymorphic/ifTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/polymorphic/009.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/polymorphic/005.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/polymorphic/011.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/polymorphic/008.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/polymorphic/006.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/ifTest1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/ConTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/ConTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/InlTest1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/PrimOpTest.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/ConTest1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/intTest.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/4.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/5.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/0.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/1.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/3.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/2.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/9_examples/6.mhs (worth 8) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/004.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/005.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/006.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/007.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/4_ifthenelse/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/0_basics/main/main.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/0_basics/ints/003.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/0_basics/ints/001.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/0_basics/ints/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/0_basics/bools/001.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/0_basics/bools/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/003.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/009.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/010.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/011.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/014.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/007.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/dividebyzero/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/1_primops/unarynegate/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/2_case/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/2_case/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/0_left/0.mhs (worth 2) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/0_left/1.mhs (worth 2) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/1_right/003.mhs (worth 2) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/1_right/001.mhs (worth 2) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/8_sums/1_right/002.mhs (worth 2) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/3_variables/001.mhs (worth 3) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/3_variables/002.mhs (worth 3) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/3_variables/000.mhs (worth 3) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/003.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/007.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/2_nestedexpr/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/2_application/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/2_application/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/2_application/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/2_application/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/4_partial_application/003.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/4_partial_application/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/4_partial_application/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/4_partial_application/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/4_partial_application/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/003.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/0_simple/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/3_recursion/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/3_recursion/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/3_recursion/fac.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/3_recursion/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/3_recursion/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/007.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/5_let/1_functions/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/0_zero_tuple/0.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/0_zero_tuple/1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/2_mixed_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/2_mixed_two_tuple/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/2_mixed_two_tuple/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/1_two_tuple/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/1_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/1_two_tuple/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/004.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/005.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/008.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/006.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/007.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/7_products/3_nested_products/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Running test: main_tests/6_programs/test.mhs (worth 5) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp!
+
+Stdout was:
+
+Passed 0 out of 122 tests: 0% Correct. Total of 0 marks.
