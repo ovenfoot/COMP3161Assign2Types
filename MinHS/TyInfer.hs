@@ -90,6 +90,10 @@ unquantify' i s (Forall x t) = do x' <- fresh
                                               (substQType (x =:TypeVar (show i)) t)
 
 unify :: Type -> Type -> TC Subst
+unify (TypeVar v1) (TypeVar v2) = if v1 == v2 then
+                                    return emptySubst
+                                  else
+                                    return (v1 =: (TypeVar v2))
 unify (Base Int) (Base Int) = return emptySubst
 unify (Base Unit) (Base Unit) = return emptySubst
 unify (Base Bool) (Base Bool) = return emptySubst
@@ -114,13 +118,11 @@ inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env
 --don't forget to run the result substitution on the entire expression using allTypes from Syntax.hs"
 
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
-
 inferExp g (Num n) = do   s <- unify (Base Int) (Base Int)
                           return (Num n, Base Int, s)
-inferExp g (Con "False") = do   s <- unify (Base Bool) (Base Bool)
-                                return (Con "False", Base Bool, s) 
-inferExp g (Con "True") = do    s <- unify (Base Bool) (Base Bool)
-                                return (Con "True", Base Bool, s)
+inferExp g (Con c) = do   s <- (unify (t1) (t1))
+                          return (Con c, t1, s)
+                            where Just (Ty t1) = constType c
 inferExp g (App (App (Prim Eq) (Num n)) (Num m)) = do    
               s <- unify (Base Bool) (Base Bool)
               return (exp, Base Bool, s) where
