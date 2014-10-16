@@ -90,7 +90,11 @@ unquantify' i s (Forall x t) = do x' <- fresh
                                               (substQType (x =:TypeVar (show i)) t)
 
 unify :: Type -> Type -> TC Subst
-unify = error "implement unify!"
+unify (Base Int) (Base Int) = return emptySubst
+unify (Base Unit) (Base Unit) = return emptySubst
+unify (Base Bool) (Base Bool) = return emptySubst
+
+unify _ _ = error "implement unify!"
 
 generalise :: Gamma -> Type -> QType
 generalise g t = error "implement generalse!"
@@ -110,7 +114,44 @@ inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env
 --don't forget to run the result substitution on the entire expression using allTypes from Syntax.hs"
 
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
-inferExp g _ = error "Implement inferExp!"
+
+inferExp g (Num n) = do   s <- unify (Base Int) (Base Int)
+                          return (Num n, Base Int, s)
+inferExp g (Con "False") = do   s <- unify (Base Bool) (Base Bool)
+                                return (Con "False", Base Bool, s) 
+inferExp g (Con "True") = do    s <- unify (Base Bool) (Base Bool)
+                                return (Con "True", Base Bool, s)
+inferExp g (App (App (Prim Eq) (Num n)) (Num m)) = do    
+              s <- unify (Base Bool) (Base Bool)
+              return (exp, Base Bool, s) where
+                exp = (App (App (Prim Eq) (Num n)) (Num m))
+inferExp g (App (App (Prim Ne) (Num n)) (Num m)) = do    
+              s <- unify (Base Bool) (Base Bool)
+              return (exp, Base Bool, s) where
+                exp = (App (App (Prim Ne) (Num n)) (Num m))
+inferExp g (App (App (Prim Lt) (Num n)) (Num m)) = do    
+              s <- unify (Base Bool) (Base Bool)
+              return (exp, Base Bool, s) where
+                exp = (App (App (Prim Lt) (Num n)) (Num m))
+inferExp g (App (App (Prim Le) (Num n)) (Num m)) = do    
+              s <- unify (Base Bool) (Base Bool)
+              return (exp, Base Bool, s) where
+                exp = (App (App (Prim Le) (Num n)) (Num m))
+inferExp g (App (App (Prim Gt) (Num n)) (Num m)) = do    
+              s <- unify (Base Bool) (Base Bool)
+              return (exp, Base Bool, s) where
+                exp = (App (App (Prim Gt) (Num n)) (Num m))
+inferExp g (App (App (Prim Ge) (Num n)) (Num m)) = do    
+              s <- unify (Base Bool) (Base Bool)
+              return (exp, Base Bool, s) where
+                exp = (App (App (Prim Ge) (Num n)) (Num m))
+inferExp g (App (App (Prim p) (Num n)) (Num m)) = do    
+              s <- unify (Base Int) (Base Int)
+              return (exp, Base Int, s) where
+                exp = (App (App (Prim p) (Num n)) (Num m))
+
+inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
+--inferExp g _ = error "Implement inferExp!"
 -- -- Note: this is the only case you need to handle for case expressions
 -- inferExp g (Case e [Alt "Inl" [x] e1, Alt "Inr" [y] e2])
 -- inferExp g (Case e _) = typeError MalformedAlternatives

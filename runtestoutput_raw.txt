@@ -106,8 +106,18 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Con "(
 
 Stdout was:
 
-Running test: zz_more_tests/basic_exprs/intTest.mhs (worth 1) :-  Stdout Check Passed!
-Running test: zz_more_tests/basic_exprs/000.mhs (worth 1) :-  Stdout Check Passed!
+Running test: zz_more_tests/basic_exprs/intTest.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 0
+
+Stdout was:
+
+Running test: zz_more_tests/basic_exprs/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 0
+
+Stdout was:
+
 Running test: main_tests/9_examples/4.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
 minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Let [Bind "x" Nothing [] (Num 5)] (Var "x")
@@ -198,26 +208,126 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Co
 
 Stdout was:
 
-Running test: main_tests/0_basics/main/main.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/0_basics/ints/003.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/0_basics/ints/001.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/0_basics/ints/000.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/0_basics/bools/001.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/0_basics/bools/000.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/003.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/001.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/004.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/009.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/005.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/002.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/010.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/011.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/014.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/008.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/006.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/007.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/primops/000.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/1_primops/dividebyzero/000.mhs (worth 1) :-  Stdout Check Passed!
+Running test: main_tests/0_basics/main/main.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 0
+
+Stdout was:
+
+Running test: main_tests/0_basics/ints/003.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 42
+
+Stdout was:
+
+Running test: main_tests/0_basics/ints/001.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 1
+
+Stdout was:
+
+Running test: main_tests/0_basics/ints/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 0
+
+Stdout was:
+
+Running test: main_tests/0_basics/bools/001.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Con "False"
+
+Stdout was:
+
+Running test: main_tests/0_basics/bools/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Con "True"
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/003.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Quot) (Num 10)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Sub) (Num 2)) (Num 1)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Quot) (Num 5)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/009.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Eq) (Num 17)) (Num 17)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Gt) (Num 1)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Mul) (Num 2)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/010.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Ne) (Num 42)) (Num 42)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/011.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Sub) (Num 0)) (Num 17)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/014.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Num 8796093022207
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Le) (Num 0)) (Num 0)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Ge) (Num 2)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/007.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Lt) (Num 0)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/primops/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Add) (Num 1)) (Num 2)
+
+Stdout was:
+
+Running test: main_tests/1_primops/dividebyzero/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
+Stderr was:
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (App (Prim Quot) (Num 1)) (Num 0)
+
+Stdout was:
+
 Running test: main_tests/1_primops/unarynegate/000.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
 minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->App (Prim Neg) (Num 17)
@@ -620,4 +730,4 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Let [B
 
 Stdout was:
 
-Passed 22 out of 122 tests: 18% Correct. Total of 100 marks.
+Passed 0 out of 122 tests: 0% Correct. Total of 0 marks.
