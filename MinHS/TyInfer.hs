@@ -94,9 +94,25 @@ unify (TypeVar v1) (TypeVar v2) = if v1 == v2 then
                                     return emptySubst
                                   else
                                     return (v1 =: (TypeVar v2))
-unify (Base Int) (Base Int) = return emptySubst
-unify (Base Unit) (Base Unit) = return emptySubst
-unify (Base Bool) (Base Bool) = return emptySubst
+unify (Base t1) (Base t2) = if t1 == t2 then
+                              return emptySubst
+                            else
+                              error("No unifier") -- FIXME return typeError (TypeMismatch t1 t2)
+unify (Prod x1 x2) (Prod y1 y2) = do
+                  s1 <- unify x1 y1
+                  s2 <- unify (substitute s1 y1) (substitute s1 y2)
+                  return (s1 <> s2)
+unify (Sum x1 x2) (Sum y1 y2) = do
+                  s1 <- unify x1 y1
+                  s2 <- unify (substitute s1 y1) (substitute s1 y2)
+                  return (s1 <> s2)
+unify (Arrow x1 x2) (Arrow y1 y2) = do
+                  s1 <- unify x1 y1
+                  s2 <- unify (substitute s1 y1) (substitute s1 y2)
+                  return (s1 <> s2)
+unify (TypeVar v) (t) =  case (elem v (tv t)) of
+                          False   -> return (v =: t) -- FIXME need to handle 'if v occurs in t'
+                          True    -> error("FUCK ME")
 
 unify _ _ = error "implement unify!"
 
