@@ -6,7 +6,8 @@ Stdout was:
 
 Running test: zz_more_tests/complex_exprs/ifTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (App (Con "Inl") (Num 1)) (App (Con "Inr") (Con "False"))
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+
 
 Stdout was:
 
@@ -36,7 +37,8 @@ Stdout was:
 
 Running test: zz_more_tests/polymorphic/ifTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (App (Con "Inl") (Num 1)) (App (Con "Inl") (Num 5))
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+
 
 Stdout was:
 
@@ -48,7 +50,7 @@ Stdout was:
 
 Running test: zz_more_tests/polymorphic/005.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (Let [Bind "g" Nothing [] (Letfun (Bind "f" Nothing ["x"] (Var "x")))] (Var "g")) (Let [Bind "g" Nothing [] (Letfun (Bind "f" Nothing ["x"] (Var "x")))] (Var "g"))
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Let [Bind "g" Nothing [] (Letfun (Bind "f" Nothing ["x"] (Var "x")))] (Var "g")
 
 Stdout was:
 
@@ -70,12 +72,7 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun
 
 Stdout was:
 
-Running test: zz_more_tests/basic_exprs/ifTest1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (Num 1) (Num 3)
-
-Stdout was:
-
+Running test: zz_more_tests/basic_exprs/ifTest1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: zz_more_tests/basic_exprs/ConTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
 minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
@@ -135,7 +132,8 @@ Stdout was:
 
 Running test: main_tests/9_examples/2.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (App (Con "Inl") (Num 1)) (App (Con "Inr") (Con "False"))
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+
 
 Stdout was:
 
@@ -145,54 +143,19 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun
 
 Stdout was:
 
-Running test: main_tests/4_ifthenelse/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (App (App (Prim Eq) (Num 1)) (Num 1)) (Con "True") (Con "False")
-
-Stdout was:
-
-Running test: main_tests/4_ifthenelse/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "False") (Num 1) (Num 0)
-
-Stdout was:
-
-Running test: main_tests/4_ifthenelse/004.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (App (App (Prim Eq) (App (App (Prim Add) (Num 1)) (Num 2))) (App (App (Prim Sub) (Num 4)) (Num 1))) (App (App (Prim Add) (Num 0)) (Num 1)) (App (App (Prim Sub) (Num 1)) (Num 0))
-
-Stdout was:
-
-Running test: main_tests/4_ifthenelse/005.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "False") (App (App (Prim Quot) (Num 49)) (Num 0)) (App (App (Prim Quot) (Num 49)) (Num 7))
-
-Stdout was:
-
-Running test: main_tests/4_ifthenelse/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (Con "True") (Con "False")
-
-Stdout was:
-
-Running test: main_tests/4_ifthenelse/006.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (App (App (Prim Lt) (Num 0)) (Num 1)) (Con "True") (Con "False")
-
-Stdout was:
-
+Running test: main_tests/4_ifthenelse/003.mhs (worth 5) :-  Stdout Check Passed!
+Running test: main_tests/4_ifthenelse/001.mhs (worth 5) :-  Stdout Check Passed!
+Running test: main_tests/4_ifthenelse/004.mhs (worth 5) :-  Stdout Check Passed!
+Running test: main_tests/4_ifthenelse/005.mhs (worth 5) :-  Stdout Check Passed!
+Running test: main_tests/4_ifthenelse/002.mhs (worth 5) :-  Stdout Check Passed!
+Running test: main_tests/4_ifthenelse/006.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/4_ifthenelse/007.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
 minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Let [Bind "x" Nothing [] (Num 1)] (If (App (App (Prim Lt) (Var "x")) (Num 2)) (Con "True") (Con "False"))
 
 Stdout was:
 
-Running test: main_tests/4_ifthenelse/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (Num 1) (Num 0)
-
-Stdout was:
-
+Running test: main_tests/4_ifthenelse/000.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/0_basics/main/main.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/0_basics/ints/003.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/0_basics/ints/001.mhs (worth 1) :-  Stdout Check Passed!
@@ -463,12 +426,7 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Let [B
 Stdout was:
 
 Running test: main_tests/7_products/0_zero_tuple/0.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/7_products/0_zero_tuple/1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->If (Con "True") (Con "()") (Con "()")
-
-Stdout was:
-
+Running test: main_tests/7_products/0_zero_tuple/1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/7_products/2_mixed_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
 minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
@@ -579,4 +537,4 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Let [B
 
 Stdout was:
 
-Passed 35 out of 122 tests: 28% Correct. Total of 167 marks.
+Passed 44 out of 122 tests: 36% Correct. Total of 204 marks.

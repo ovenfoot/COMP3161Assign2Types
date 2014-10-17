@@ -160,11 +160,20 @@ inferExp g (App e1 e2) = do
             alpha         <- fresh
             t3            <- unquantify (Ty (Arrow t2 alpha))
             s3            <- ((unify t1 t3))
-            t4            <- unquantify' 0 s' (Ty t3)
+            t4            <- unquantify' 0 (s1<>s2<>s3) (Ty t3)
             tfinal        <- arrowTail(t4)
-            --poop          <- runTC(alpha)
+            --poop          <- runTxxxC(alpha)
             return (App e1' e2', tfinal, s1 <> s2 <> s3)
-                
+
+inferExp g (If e e1 e2) = do
+            (e', t, s)    <- inferExp g e
+            s1            <- unify t (Base Bool)
+            (e1', t1, s1) <- inferExp g e1
+            (e2', t2, s2) <- inferExp g e2
+            s3            <- unify t1 t2
+            tfinal        <- unquantify' 0 (s<>s1<>s2<>s3) (Ty t2)
+            return (If e e1 e2, tfinal, s<>s1<>s2<>s3)
+
 inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
 
 {-
