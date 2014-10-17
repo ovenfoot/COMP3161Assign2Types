@@ -154,6 +154,10 @@ inferExp g (Prim p) = do
             s <- (unify t1 t1)
             return (Prim p, t1, s)
               where Ty t1 = primOpType p
+inferExp g (Var id) = do
+            s <- (unify t1 t1)
+            return (Var id, t1, s)
+              where t1 = TypeVar id
 inferExp g (App e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
             (e2', t2, s2) <- inferExp g e2
@@ -172,7 +176,17 @@ inferExp g (If e e1 e2) = do
             (e2', t2, s2) <- inferExp g e2
             s3            <- unify (substitute (s2<>s1) (t1)) (substitute (s2<>s1) (t2))
             tfinal        <- unquantify' 0 (s<>s1<>s2<>s3<>s') (Ty t2)
-            return (If e e1 e2, tfinal, s<>s1<>s2<>s3<>s')
+            return (If e' e1' e2', tfinal, s<>s1<>s2<>s3<>s')
+            
+
+inferExp g (Let [Bind id Nothing [] e1] e2) = do
+            (e1', t1, s1)   <- inferExp g e1
+            svar            <- unify (TypeVar id) t1
+            (e2', t2, s2)   <- inferExp g e2
+            tfinal          <- unquantify' 0 (s1 <> svar) (Ty t2)
+            return ((Let [Bind id (Just (Ty t1)) [] e1] e2), tfinal, s2<>s1) 
+
+
 
 inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
 
