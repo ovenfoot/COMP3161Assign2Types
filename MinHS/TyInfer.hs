@@ -97,26 +97,30 @@ unify (TypeVar v1) (TypeVar v2) = if v1 == v2 then
 unify (Base t1) (Base t2) = if t1 == t2 then
                               return emptySubst
                             else
-                             typeError (TypeMismatch (Base t1) (Base t2))-- error("No unifier") -- FIXME return typeError (TypeMismatch t1 t2)
+                             typeError (TypeMismatch (Base t1) (Base t2))-- 
 unify (Prod x1 x2) (Prod y1 y2) = do
                   s1 <- unify x1 y1
-                  s2 <- unify (substitute s1 y1) (substitute s1 y2)
+                  s2 <- unify (substitute s1 x2) (substitute s1 y2)
                   return (s1 <> s2)
 unify (Sum x1 x2) (Sum y1 y2) = do
                   s1 <- unify x1 y1
-                  s2 <- unify (substitute s1 y1) (substitute s1 y2)
+                  s2 <- unify (substitute s1 x2) (substitute s1 y2)
                   return (s1 <> s2)
 unify (Arrow x1 x2) (Arrow y1 y2) = do
                   s1 <- unify x1 y1
-                  s2 <- unify (substitute s1 y1) (substitute s1 y2)
+                  s2 <- unify (substitute s1 x2) (substitute s1 y2)
                   return (s1 <> s2)
 unify (TypeVar v) (t) =  if (elem v (tv t)) then
                           typeError (OccursCheckFailed v t)
                         else
-                          return (v =: t)
---unify _ _ = typeError (MalformedAlternatives)
+                          return (v =: t) 
+unify (t) (TypeVar v) =  if (elem v (tv t)) then
+                          typeError (OccursCheckFailed v t)
+                        else
+                          return (v =: t)                   
 
-unify _ _ = error "implement unify!"
+--unify _ _ = typeError (MalformedAlternatives)
+unify t1 t2 = error ("implement unify! t1 is -->" ++ (show t1) ++"<---->" ++ (show t2))
 
 generalise :: Gamma -> Type -> QType
 generalise g t = error "implement generalse!"
@@ -135,12 +139,34 @@ inferProgram gamma [Bind id Nothing [] expr] =
 inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env) ++ "<--- program is --->" ++ (show bs)) 
 --don't forget to run the result substitution on the entire expression using allTypes from Syntax.hs"
 
+arrowTail:: Type -> TC Type
+arrowTail (Arrow e1 t1) = return t1
+
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
-inferExp g (Num n) = do   s <- unify (Base Int) (Base Int)
-                          return (Num n, Base Int, s)
-inferExp g (Con c) = do   s <- (unify (t1) (t1))
-                          return (Con c, t1, s)
-                            where Just (Ty t1) = constType c
+inferExp g (Num n) = do   
+            s <- unify (Base Int) (Base Int)
+            return (Num n, Base Int, s)
+inferExp g (Con c) = do   
+            s <- (unify (t1) (t1))
+            return (Con c, t1, s)
+              where Just (Ty t1) = constType c
+inferExp g (Prim p) = do
+            s <- (unify t1 t1)
+            return (Prim p, t1, s)
+              where Ty t1 = primOpType p
+inferExp g (App e1 e2) = do
+            (e1', t1, s1) <- inferExp g e1
+            (e2', t2, s2) <- inferExp g e2
+            alpha         <- fresh
+            t3            <- unquantify (Ty (Arrow t2 alpha))
+            s'            <- ((unify t1 t3))
+            t4            <- unquantify' 0 s' (Ty t3)
+            tfinal        <- arrowTail(t4)
+            --poop          <- runTC(alpha)
+            return (App e1' e2', tfinal, s')
+                
+            
+
 inferExp g (App (App (Prim Eq) (Num n)) (Num m)) = do    
               s <- unify (Base Bool) (Base Bool)
               return (exp, Base Bool, s) where
