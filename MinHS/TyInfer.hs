@@ -159,14 +159,15 @@ inferExp g (App e1 e2) = do
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
             t3            <- unquantify (Ty (Arrow t2 alpha))
-            s'            <- ((unify t1 t3))
+            s3            <- ((unify t1 t3))
             t4            <- unquantify' 0 s' (Ty t3)
             tfinal        <- arrowTail(t4)
             --poop          <- runTC(alpha)
-            return (App e1' e2', tfinal, s')
+            return (App e1' e2', tfinal, s1 <> s2 <> s3)
                 
-            
+inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
 
+{-
 inferExp g (App (App (Prim Eq) (Num n)) (Num m)) = do    
               s <- unify (Base Bool) (Base Bool)
               return (exp, Base Bool, s) where
@@ -195,12 +196,4 @@ inferExp g (App (App (Prim p) (Num n)) (Num m)) = do
               s <- unify (Base Int) (Base Int)
               return (exp, Base Int, s) where
                 exp = (App (App (Prim p) (Num n)) (Num m))
-
-inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
---inferExp g _ = error "Implement inferExp!"
--- -- Note: this is the only case you need to handle for case expressions
--- inferExp g (Case e [Alt "Inl" [x] e1, Alt "Inr" [y] e2])
--- inferExp g (Case e _) = typeError MalformedAlternatives
-
-
- 
+-} 
