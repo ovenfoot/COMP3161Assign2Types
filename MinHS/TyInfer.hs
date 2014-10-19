@@ -163,9 +163,8 @@ inferExp g (App e1 e2) = do
             --g1            <- substGamma s1 g
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
-            t3            <- unquantify (Ty (Arrow  t2 alpha))
-            s3            <- unify (substitute (s2<>s1) (t1)) t3
-            return (App e1' e2', (substitute s3 alpha), s1 <> s2 <> s3)
+            u            <- unify (substitute (s2<>s1) (t1)) (Arrow t2 alpha)
+            return (App e1' e2', (substitute u alpha), s1 <> s2 <> u)
 
 inferExp g (If e e1 e2) = do
             (e', t, s)    <- inferExp g e
