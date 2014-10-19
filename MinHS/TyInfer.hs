@@ -163,7 +163,7 @@ inferExp g (App e1 e2) = do
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
             t3            <- unquantify (Ty (Arrow t2 alpha))
-            s3            <- ((unify t1 t3))
+            s3            <- unify (substitute (s2<>s1) (t1)) (substitute (s2<>s1) (t3))
             t4            <- unquantify' 0 (s1<>s2<>s3) (Ty t3)
             tfinal        <- arrowTail(t4)
             --poop          <- runTxxxC(alpha)
@@ -177,7 +177,6 @@ inferExp g (If e e1 e2) = do
             s3            <- unify (substitute (s2<>s1) (t1)) (substitute (s2<>s1) (t2))
             tfinal        <- unquantify' 0 (s<>s1<>s2<>s3<>s') (Ty t2)
             return (If e' e1' e2', tfinal, s<>s1<>s2<>s3<>s')
-            
 
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
