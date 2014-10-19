@@ -1,95 +1,118 @@
-Running test: zz_more_tests/complex_exprs/010.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (App (Prim Eq) (Var "x")) (Num 0)) (Num 0) (App (Var "f") (App (App (Prim Sub) (Var "x")) (Num 1)))))
-
-Stdout was:
+Running test: zz_more_tests/complex_exprs/010.mhs (worth 1) :-  Stdout Check Failed:
+-main :: (Int -> Int) = (letfun f :: (Int -> Int) x = if (==) x 0
+-                                                        then 0
+-                                                        else f ((-) x 1));
++main :: (a -> Int) = (letfun f :: (a -> Int) x = if (==) x 0
++                                                    then 0
++                                                    else f ((-) x 1));
 
 Running test: zz_more_tests/complex_exprs/ifTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
-Running test: zz_more_tests/advanced_polymorphic/003.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (Con "True") (Let [Bind "h" Nothing [] (Letfun (Bind "g" Nothing ["y"] (Var "x")))] (Var "h")) (Let [Bind "h" Nothing [] (Letfun (Bind "g" Nothing ["y"] (App (App (Prim Add) (Var "x")) (Num 1))))] (Var "h"))))
+Running test: zz_more_tests/advanced_polymorphic/003.mhs (worth 1) :-  Stdout Check Failed:
+-main :: forall k. (Int -> k -> Int) = let g :: forall j. (Int -> j -> Int) = (letfun f :: (Int -> j -> Int) x = if True
+-                                                                                                                   then let h :: forall c. (c -> Int) = (letfun g :: (c -> Int) y = x);
+-                                                                                                                        in h
+-                                                                                                                   else let h :: forall f. (f -> Int) = (letfun g :: (f -> Int) y = (+) x 1);
+-                                                                                                                        in h);
+-                                      in g;
++Variable g cannot occur in the type (a -> g -> Int) (occurs check)
 
-Stdout was:
-
-Running test: zz_more_tests/advanced_polymorphic/001.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (App (Prim Gt) (Var "x")) (Num 1)) (Let [Bind "h" Nothing [] (Letfun (Bind "g" Nothing ["y"] (Var "x")))] (Var "h")) (Let [Bind "h" Nothing [] (Letfun (Bind "g" Nothing ["y"] (Var "x")))] (Var "h"))))
-
-Stdout was:
+Running test: zz_more_tests/advanced_polymorphic/001.mhs (worth 1) :-  Stdout Check Failed:
+-main :: forall k. (Int -> k -> Int) = let g :: forall j. (Int -> j -> Int) = (letfun f :: (Int -> j -> Int) x = if (>) x 1
+-                                                                                                                   then let h :: forall e. (e -> Int) = (letfun g :: (e -> Int) y = x);
+-                                                                                                                        in h
+-                                                                                                                   else let h :: forall h. (h -> Int) = (letfun g :: (h -> Int) y = x);
+-                                                                                                                        in h);
+-                                      in g;
++main :: j = let g :: (a -> m) = (letfun f :: (a -> m) x = if (>) x 1
++                                                             then let h :: (f -> x) = (letfun g :: (f -> x) y = x);
++                                                                  in h
++                                                             else let h :: (j -> x) = (letfun g :: (j -> x) y = x);
++                                                                  in h);
++            in g;
 
 Running test: zz_more_tests/advanced_polymorphic/004.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Con "Pair") (Letfun (Bind "h" Nothing ["z"] (Var "x")))) (App (App (Prim Add) (Var "x")) (Num 1))))
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+
 
 Stdout was:
 
 Running test: zz_more_tests/advanced_polymorphic/012.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Con "Pair") (Let [Bind "m" Nothing [] (Letfun (Bind "h" Nothing ["m"] (Let [Bind "z" Nothing [] (Var "x")] (Var "x"))))] (Var "m"))) (App (App (Prim Add) (Var "x")) (Num 1))))
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+
 
 Stdout was:
 
 Running test: zz_more_tests/polymorphic/ifTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: zz_more_tests/polymorphic/009.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Case (App (Prim Snd) (Var "x")) [Alt "Inl" ["y"] (App (Prim Fst) (Var "x")),Alt "Inr" ["z"] (Var "z")]))
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Case (App (Prim Snd) (Var "x")) [Alt "Inl" ["y"] (App (Prim Fst) (Var "x")),Alt "Inr" ["z"] (Var "z")]
 
 Stdout was:
 
-Running test: zz_more_tests/polymorphic/005.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Var "x"))
-
-Stdout was:
+Running test: zz_more_tests/polymorphic/005.mhs (worth 1) :-  Stdout Check Failed:
+-main :: forall f. (f -> f) = if True
+-                                then let g :: forall a. (a -> a) = (letfun f :: (a -> a) x = x);
+-                                     in g
+-                                else let g :: forall d. (d -> d) = (letfun f :: (d -> d) x = x);
+-                                     in g;
++main :: h = if True
++               then let g :: (a -> x) = (letfun f :: (a -> x) x = x);
++                    in g
++               else let g :: (e -> x) = (letfun f :: (e -> x) x = x);
++                    in g;
 
 Running test: zz_more_tests/polymorphic/011.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (Prim Fst) (Var "x")) (App (Prim Snd) (Var "x")) (App (Var "f") (App (App (Con "Pair") (Con "True")) (Num 10)))))
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+
 
 Stdout was:
 
 Running test: zz_more_tests/polymorphic/008.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (Prim Fst) (Var "x")) (App (Prim Fst) (Var "x")) (App (Prim Snd) (Var "x"))))
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+
 
 Stdout was:
 
 Running test: zz_more_tests/polymorphic/006.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Case (Var "x") [Alt "Inl" ["z"] (Var "z"),Alt "Inr" ["k"] (Var "k")]))
+minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Case (Var "x") [Alt "Inl" ["z"] (Var "z"),Alt "Inr" ["k"] (Var "k")]
 
 Stdout was:
 
 Running test: zz_more_tests/basic_exprs/ifTest1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: zz_more_tests/basic_exprs/ConTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: zz_more_tests/basic_exprs/ConTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: zz_more_tests/basic_exprs/InlTest1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -98,23 +121,29 @@ Running test: zz_more_tests/basic_exprs/PrimOpTest.mhs (worth 1) :-  Stdout Chec
 Running test: zz_more_tests/basic_exprs/ConTest1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: zz_more_tests/basic_exprs/intTest.mhs (worth 1) :-  Stdout Check Passed!
 Running test: zz_more_tests/basic_exprs/000.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/9_examples/4.mhs (worth 8) :-  Stdout Check Passed!
+Running test: main_tests/9_examples/4.mhs (worth 8) :-  Stdout Check Failed:
+-main :: Int = let x :: Int = 5;
+-              in x;
++main :: a = let x :: Int = 5;
++            in x;
+
 Running test: main_tests/9_examples/5.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["z"] (Var "z"))
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+
 
 Stdout was:
 
 Running test: main_tests/9_examples/0.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/9_examples/1.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -127,16 +156,14 @@ Stdout was:
 
 Running test: main_tests/9_examples/2.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
-Running test: main_tests/9_examples/6.mhs (worth 8) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Var "x"))
-
-Stdout was:
+Running test: main_tests/9_examples/6.mhs (worth 8) :-  Stdout Check Failed:
+-main :: Int = (letfun f :: (Int -> Int) x = x) 1;
++main :: d = (letfun f :: (a -> x) x = x) 1;
 
 Running test: main_tests/4_ifthenelse/003.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/4_ifthenelse/001.mhs (worth 5) :-  Stdout Check Passed!
@@ -181,42 +208,57 @@ Stdout was:
 
 Running test: main_tests/8_sums/0_left/0.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/0_left/1.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/1_right/003.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/1_right/001.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/1_right/002.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
-Running test: main_tests/3_variables/001.mhs (worth 3) :-  Stdout Check Passed!
-Running test: main_tests/3_variables/002.mhs (worth 3) :-  Stdout Check Passed!
-Running test: main_tests/3_variables/000.mhs (worth 3) :-  Stdout Check Passed!
+Running test: main_tests/3_variables/001.mhs (worth 3) :-  Stdout Check Failed:
+-main :: Bool = let t :: Bool = True;
+-               in t;
++main :: a = let t :: Bool = True;
++            in t;
+
+Running test: main_tests/3_variables/002.mhs (worth 3) :-  Stdout Check Failed:
+-main :: Int = let v :: Int = (-) 1 2;
+-              in v;
++main :: c = let v :: Int = (-) 1 2;
++            in v;
+
+Running test: main_tests/3_variables/000.mhs (worth 3) :-  Stdout Check Failed:
+-main :: Int = let x :: Int = 1;
+-              in x;
++main :: a = let x :: Int = 1;
++            in x;
+
 Running test: main_tests/2_nestedexpr/003.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/2_nestedexpr/001.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/2_nestedexpr/004.mhs (worth 7) :-  Stdout Check Passed!
@@ -226,266 +268,358 @@ Running test: main_tests/2_nestedexpr/008.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/2_nestedexpr/006.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/2_nestedexpr/007.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/2_nestedexpr/000.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/5_let/2_application/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Prim Mul) (Num 2)) (Var "x")))
+Running test: main_tests/5_let/2_application/001.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = (*) 2 x);
+-              in let g :: (Int -> Int) = (letfun g :: (Int -> Int) x = (- x));
+-                 in g (f 2);
++main :: m = let f :: (a -> Int) = (letfun f :: (a -> Int) x = (*) 2 x);
++            in let g :: (f -> Int) = (letfun g :: (f -> Int) x = (- x));
++               in g (f 2);
 
-Stdout was:
+Running test: main_tests/5_let/2_application/004.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = (+) x 1);
+-              in let g :: (Int -> Int) = f;
+-                 in g 1;
++main :: h = let f :: (a -> Int) = (letfun f :: (a -> Int) x = (+) x 1);
++            in let g :: f = f;
++               in g 1;
 
-Running test: main_tests/5_let/2_application/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Prim Add) (Var "x")) (Num 1)))
+Running test: main_tests/5_let/2_application/002.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let g :: (Int -> Int) = (letfun g' :: (Int -> Int) x = (*) x x);
+-              in let f :: (Int -> Int) = g;
+-                 in g 7;
++main :: i = let g :: (a -> Int) = (letfun g' :: (a -> Int) x = (*) x x);
++            in let f :: g = g;
++               in g 7;
 
-Stdout was:
+Running test: main_tests/5_let/2_application/000.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Bool = let isTrue :: (Bool -> Bool) = (letfun isTrue :: (Bool -> Bool) x = if x
+-                                                                                      then True
+-                                                                                      else False);
+-               in let f :: (Int -> Bool) = (letfun f :: (Int -> Bool) x = (==) x 10);
+-                  in isTrue (f 11);
++main :: l = let isTrue :: (a -> Bool) = (letfun isTrue :: (a -> Bool) x = if x
++                                                                             then True
++                                                                             else False);
++            in let f :: (d -> Bool) = (letfun f :: (d -> Bool) x = (==) x 10);
++               in isTrue (f 11);
 
-Running test: main_tests/5_let/2_application/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "g'" Nothing ["x"] (App (App (Prim Mul) (Var "x")) (Var "x")))
+Running test: main_tests/5_let/4_partial_application/003.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: forall a. forall c. (a -> c -> a) = (letfun f :: (a -> c -> a) x = (letfun g :: (c -> a) y = x));
+-              in let g :: forall f. (f -> Int) = f 10;
+-                 in g 3;
++main :: i = let f :: (a -> c -> x) = (letfun f :: (a -> c -> x) x = (letfun g :: (c -> x) y = x));
++            in let g :: g = f 10;
++               in g 3;
 
-Stdout was:
+Running test: main_tests/5_let/4_partial_application/005.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int) x = (letfun g :: (Int -> Int) y = (*) x ((- y))));
+-              in let z :: forall h. (h -> Int -> Int) = (letfun z :: (h -> Int -> Int) x = f 3);
+-                 in z 2 4;
++main :: p = let f :: (a -> c -> Int) = (letfun f :: (a -> c -> Int) x = (letfun g :: (c -> Int) y = (*) x ((- y))));
++            in let z :: (j -> m) = (letfun z :: (j -> m) x = f 3);
++               in z 2 4;
 
-Running test: main_tests/5_let/2_application/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "isTrue" Nothing ["x"] (If (Var "x") (Con "True") (Con "False")))
+Running test: main_tests/5_let/4_partial_application/002.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: forall a. (a -> Int -> Int) = (letfun f :: (a -> Int -> Int) x = (letfun g :: (Int -> Int) y = (+) y y));
+-              in f 2 3;
++main :: k = let f :: (a -> c -> Int) = (letfun f :: (a -> c -> Int) x = (letfun g :: (c -> Int) y = (+) y y));
++            in f 2 3;
 
-Stdout was:
+Running test: main_tests/5_let/4_partial_application/008.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let x :: Int = 8;
+-              in let f :: (Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int) w = (letfun g :: (Int -> Int) y = (+) ((+) ((+) y x) w) 1));
+-                 in f 3 2;
++main :: p = let x :: Int = 8;
++            in let f :: (a -> c -> Int) = (letfun f :: (a -> c -> Int) w = (letfun g :: (c -> Int) y = (+) ((+) ((+) y x) w) 1));
++               in f 3 2;
 
-Running test: main_tests/5_let/4_partial_application/003.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "g" Nothing ["y"] (Var "x"))))
+Running test: main_tests/5_let/4_partial_application/000.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int) x = (letfun g :: (Int -> Int) y = (+) x y));
+-              in f 1 2;
++main :: k = let f :: (a -> c -> Int) = (letfun f :: (a -> c -> Int) x = (letfun g :: (c -> Int) y = (+) x y));
++            in f 1 2;
 
-Stdout was:
+Running test: main_tests/5_let/0_simple/003.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Bool = let a :: Bool = True;
+-               in let b :: Bool = False;
+-                  in if (<) 1 2
+-                        then a
+-                        else b;
++main :: d = let a :: Bool = True;
++            in let b :: Bool = False;
++               in if (<) 1 2
++                     then a
++                     else b;
 
-Running test: main_tests/5_let/4_partial_application/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "g" Nothing ["y"] (App (App (Prim Mul) (Var "x")) (App (Prim Neg) (Var "y"))))))
-
-Stdout was:
-
-Running test: main_tests/5_let/4_partial_application/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "g" Nothing ["y"] (App (App (Prim Add) (Var "y")) (Var "y")))))
-
-Stdout was:
-
-Running test: main_tests/5_let/4_partial_application/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["w"] (Letfun (Bind "g" Nothing ["y"] (App (App (Prim Add) (App (App (Prim Add) (App (App (Prim Add) (Var "y")) (Var "x"))) (Var "w"))) (Num 1)))))
-
-Stdout was:
-
-Running test: main_tests/5_let/4_partial_application/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "g" Nothing ["y"] (App (App (Prim Add) (Var "x")) (Var "y")))))
-
-Stdout was:
-
-Running test: main_tests/5_let/0_simple/003.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/001.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/004.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/5_let/0_simple/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: implement unify! t1 is -->Base Int<---->Arrow (TypeVar "b") (TypeVar "b")
-
-Stdout was:
-
+Running test: main_tests/5_let/0_simple/005.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/002.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/5_let/0_simple/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "g" Nothing ["x"] (Letfun (Bind "g'" Nothing ["y"] (App (App (Prim Add) (Var "x")) (Var "y")))))
+Running test: main_tests/5_let/0_simple/006.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let plus :: (Int -> Int -> Int) = (letfun g :: (Int -> Int -> Int) x = (letfun g' :: (Int -> Int) y = (+) x y));
+-              in let inc :: (Int -> Int) = (letfun g :: (Int -> Int) x = (+) x 1);
+-                 in let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = if (==) x 10
+-                                                                             then 10
+-                                                                             else let y :: Int = f ((+) x 1);
+-                                                                                  in plus let z :: Int = 4;
+-                                                                                          in inc z y);
+-                    in f ((- 1003));
++main :: a7 = let plus :: (a -> c -> Int) = (letfun g :: (a -> c -> Int) x = (letfun g' :: (c -> Int) y = (+) x y));
++             in let inc :: (i -> Int) = (letfun g :: (i -> Int) x = (+) x 1);
++                in let f :: (n -> Int) = (letfun f :: (n -> Int) x = if (==) x 10
++                                                                        then 10
++                                                                        else let y :: w = f ((+) x 1);
++                                                                             in plus let z :: Int = 4;
++                                                                                     in inc z y);
++                   in f ((- 1003));
 
-Stdout was:
+Running test: main_tests/5_let/0_simple/000.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Bool = let x :: Bool = True;
+-               in x;
++main :: a = let x :: Bool = True;
++            in x;
 
-Running test: main_tests/5_let/0_simple/000.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/5_let/3_recursion/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "g" Nothing ["y"] (If (App (App (Prim Eq) (Var "x")) (Num 10)) (Var "y") (App (App (Var "f") (App (App (Prim Add) (Var "x")) (Num 1))) (App (App (Prim Add) (Var "y")) (Num 2)))))))
+Running test: main_tests/5_let/3_recursion/001.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = (letfun f :: (Int -> Int -> Int) x = (letfun g :: (Int -> Int) y = if (==) x 10
+-                                                                                    then y
+-                                                                                    else f ((+) x 1) ((+) y 2))) 0 2;
++main :: Int = (letfun f :: (a -> c -> Int) x = (letfun g :: (c -> Int) y = if (==) x 10
++                                                                              then y
++                                                                              else f ((+) x 1) ((+) y 2))) 0 2;
 
-Stdout was:
+Running test: main_tests/5_let/3_recursion/005.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = if (==) x 1000
+-                                                                       then x
+-                                                                       else f ((+) x 1));
+-              in f 10;
++main :: m = let f :: (a -> Int) = (letfun f :: (a -> Int) x = if (==) x 1000
++                                                                 then x
++                                                                 else f ((+) x 1));
++            in f 10;
 
-Running test: main_tests/5_let/3_recursion/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (App (Prim Eq) (Var "x")) (Num 1000)) (Var "x") (App (Var "f") (App (App (Prim Add) (Var "x")) (Num 1)))))
+Running test: main_tests/5_let/3_recursion/fac.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = (letfun fac :: (Int -> Int) n = if (==) n 0
+-                                                 then 1
+-                                                 else (*) n (fac ((-) n 1))) 14;
++main :: Int = (letfun fac :: (a -> Int) n = if (==) n 0
++                                               then 1
++                                               else (*) n (fac ((-) n 1))) 14;
 
-Stdout was:
+Running test: main_tests/5_let/3_recursion/002.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let fib :: (Int -> Int) = (letfun fib :: (Int -> Int) n = if (==) n 0
+-                                                                           then 0
+-                                                                           else if (==) n 1
+-                                                                                   then 1
+-                                                                                   else (+) (fib ((-) n 2)) (fib ((-) n 1)));
+-              in let n :: Int = 25;
+-                 in fib n;
++main :: w = let fib :: (a -> Int) = (letfun fib :: (a -> Int) n = if (==) n 0
++                                                                     then 0
++                                                                     else if (==) n 1
++                                                                             then 1
++                                                                             else (+) (fib ((-) n 2)) (fib ((-) n 1)));
++            in let n :: Int = 25;
++               in fib n;
 
-Running test: main_tests/5_let/3_recursion/fac.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "fac" Nothing ["n"] (If (App (App (Prim Eq) (Var "n")) (Num 0)) (Num 1) (App (App (Prim Mul) (Var "n")) (App (Var "fac") (App (App (Prim Sub) (Var "n")) (Num 1))))))
+Running test: main_tests/5_let/3_recursion/000.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = if (==) x 100
+-                                                                       then x
+-                                                                       else f ((+) x 1));
+-              in f 10;
++main :: m = let f :: (a -> Int) = (letfun f :: (a -> Int) x = if (==) x 100
++                                                                 then x
++                                                                 else f ((+) x 1));
++            in f 10;
 
-Stdout was:
+Running test: main_tests/5_let/1_functions/001.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Bool = let lt0 :: (Int -> Bool) = (letfun lt0 :: (Int -> Bool) x = if (<) x 0
+-                                                                              then True
+-                                                                              else False);
+-               in let gt1 :: (Int -> Bool) = (letfun gt1 :: (Int -> Bool) x = (>) x 1);
++main :: Bool = let lt0 :: (a -> Bool) = (letfun lt0 :: (a -> Bool) x = if (<) x 0
++                                                                          then True
++                                                                          else False);
++               in let gt1 :: (f -> Bool) = (letfun gt1 :: (f -> Bool) x = (>) x 1);
+                   in if lt0 ((- 10))
+                         then if gt1 0
+                                 then False
+                                 else True
+                         else False;
 
-Running test: main_tests/5_let/3_recursion/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "fib" Nothing ["n"] (If (App (App (Prim Eq) (Var "n")) (Num 0)) (Num 0) (If (App (App (Prim Eq) (Var "n")) (Num 1)) (Num 1) (App (App (Prim Add) (App (Var "fib") (App (App (Prim Sub) (Var "n")) (Num 2)))) (App (Var "fib") (App (App (Prim Sub) (Var "n")) (Num 1)))))))
+Running test: main_tests/5_let/1_functions/004.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Bool = let f :: forall a. (a -> Int) = (letfun f :: (a -> Int) x = (- 1));
+-               in let f :: forall d. (d -> Int) = (letfun f :: (d -> Int) x = (- 2));
+-                  in let f :: forall g. (g -> Int) = (letfun f :: (g -> Int) x = (- 3));
+-                     in let f :: forall j. (j -> Int) = (letfun f :: (j -> Int) x = (- 4));
+-                        in let f :: forall m. (m -> Int) = (letfun f :: (m -> Int) x = (- 5));
+-                           in let f :: forall p. (p -> Int) = (letfun f :: (p -> Int) x = (- 6));
+-                              in let f :: forall s. (s -> Int) = (letfun f :: (s -> Int) x = (- 7));
+-                                 in let f :: forall v. (v -> Int) = (letfun f :: (v -> Int) x = (- 8));
+-                                    in let f :: forall y. (y -> Int) = (letfun f :: (y -> Int) x = (- 9));
+-                                       in let f :: forall a2. (a2 -> Bool) = (letfun f :: (a2 -> Bool) x = True);
+-                                          in f 7;
++main :: a5 = let f :: (a -> Int) = (letfun f :: (a -> Int) x = (- 1));
++             in let f :: (d -> Int) = (letfun f :: (d -> Int) x = (- 2));
++                in let f :: (g -> Int) = (letfun f :: (g -> Int) x = (- 3));
++                   in let f :: (j -> Int) = (letfun f :: (j -> Int) x = (- 4));
++                      in let f :: (m -> Int) = (letfun f :: (m -> Int) x = (- 5));
++                         in let f :: (p -> Int) = (letfun f :: (p -> Int) x = (- 6));
++                            in let f :: (s -> Int) = (letfun f :: (s -> Int) x = (- 7));
++                               in let f :: (v -> Int) = (letfun f :: (v -> Int) x = (- 8));
++                                  in let f :: (y -> Int) = (letfun f :: (y -> Int) x = (- 9));
++                                     in let f :: (a2 -> Bool) = (letfun f :: (a2 -> Bool) x = True);
++                                        in f 7;
 
-Stdout was:
+Running test: main_tests/5_let/1_functions/005.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: forall a. forall c. forall e. forall g. (a -> c -> e -> g -> Int -> Int) = (letfun f :: (a -> c -> e -> g -> Int -> Int) x = (letfun f :: (c -> e -> g -> Int -> Int) x = (letfun f :: (e -> g -> Int -> Int) x = (letfun f :: (g -> Int -> Int) x = (letfun f :: (Int -> Int) x = (*) 2 x)))));
+-              in f 0 0 0 0 7;
++Variable i cannot occur in the type (e -> g -> i -> Int) (occurs check)
 
-Running test: main_tests/5_let/3_recursion/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (App (Prim Eq) (Var "x")) (Num 100)) (Var "x") (App (Var "f") (App (App (Prim Add) (Var "x")) (Num 1)))))
+Running test: main_tests/5_let/1_functions/002.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let x :: Int = 2;
+-              in let square :: (Int -> Int) = (letfun square :: (Int -> Int) x = (*) x x);
+-                 in square (square x);
++main :: k = let x :: Int = 2;
++            in let square :: (a -> Int) = (letfun square :: (a -> Int) x = (*) x x);
++               in square (square x);
 
-Stdout was:
+Running test: main_tests/5_let/1_functions/008.mhs (worth 7) :-  Stdout Check Failed:
+-main :: forall k. (Int -> k -> Int) = let g :: forall j. (Int -> j -> Int) = (letfun f :: (Int -> j -> Int) x = if True
+-                                                                                                                   then let h :: forall c. (c -> Int) = (letfun g :: (c -> Int) y = x);
+-                                                                                                                        in h
+-                                                                                                                   else let h :: forall f. (f -> Int) = (letfun g :: (f -> Int) y = (+) x 1);
+-                                                                                                                        in h);
+-                                      in g;
++Variable g cannot occur in the type (a -> g -> Int) (occurs check)
 
-Running test: main_tests/5_let/1_functions/001.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "lt0" Nothing ["x"] (If (App (App (Prim Lt) (Var "x")) (Num 0)) (Con "True") (Con "False")))
+Running test: main_tests/5_let/1_functions/006.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = (letfun f :: (Int -> Int) x = (+) x x) 1;
++main :: Int = (letfun f :: (a -> Int) x = (+) x x) 1;
 
-Stdout was:
+Running test: main_tests/5_let/1_functions/007.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let g :: (Int -> Int) = (letfun f :: (Int -> Int) x = (+) x x);
+-              in g 1;
++main :: h = let g :: (a -> Int) = (letfun f :: (a -> Int) x = (+) x x);
++            in g 1;
 
-Running test: main_tests/5_let/1_functions/004.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (Prim Neg) (Num 1)))
-
-Stdout was:
-
-Running test: main_tests/5_let/1_functions/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "f" Nothing ["x"] (Letfun (Bind "f" Nothing ["x"] (App (App (Prim Mul) (Num 2)) (Var "x")))))))))))
-
-Stdout was:
-
-Running test: main_tests/5_let/1_functions/002.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "square" Nothing ["x"] (App (App (Prim Mul) (Var "x")) (Var "x")))
-
-Stdout was:
-
-Running test: main_tests/5_let/1_functions/008.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (Con "True") (Let [Bind "h" Nothing [] (Letfun (Bind "g" Nothing ["y"] (Var "x")))] (Var "h")) (Let [Bind "h" Nothing [] (Letfun (Bind "g" Nothing ["y"] (App (App (Prim Add) (Var "x")) (Num 1))))] (Var "h"))))
-
-Stdout was:
-
-Running test: main_tests/5_let/1_functions/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Prim Add) (Var "x")) (Var "x")))
-
-Stdout was:
-
-Running test: main_tests/5_let/1_functions/007.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Prim Add) (Var "x")) (Var "x")))
-
-Stdout was:
-
-Running test: main_tests/5_let/1_functions/000.mhs (worth 7) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (App (App (Prim Add) (Var "x")) (Var "x")))
-
-Stdout was:
+Running test: main_tests/5_let/1_functions/000.mhs (worth 7) :-  Stdout Check Failed:
+-main :: Int = let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = (+) x x);
+-              in f 1;
++main :: h = let f :: (a -> Int) = (letfun f :: (a -> Int) x = (+) x x);
++            in f 1;
 
 Running test: main_tests/7_products/0_zero_tuple/0.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/7_products/0_zero_tuple/1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/7_products/2_mixed_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/2_mixed_two_tuple/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/2_mixed_two_tuple/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/1_two_tuple/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/1_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/1_two_tuple/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/004.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/005.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/008.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/006.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/007.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/6_programs/test.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "f" Nothing ["x"] (If (App (App (Prim Lt) (Num 0)) (Num 10)) (Con "True") (App (Var "f") (App (App (Prim Sub) (Var "x")) (Num 1)))))
+minhs-2: implement unify! t1 is -->Base Int<---->Arrow (Base Int) (TypeVar "i")
 
 Stdout was:
 
-Passed 54 out of 122 tests: 44% Correct. Total of 261 marks.
+Passed 49 out of 122 tests: 40% Correct. Total of 237 marks.
