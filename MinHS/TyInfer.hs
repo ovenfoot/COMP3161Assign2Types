@@ -122,7 +122,9 @@ unify (t) (TypeVar v) =  if (elem v (tv t)) then
 unify t1 t2 = error ("implement unify! t1 is -->" ++ (show t1) ++"<---->" ++ (show t2))
 
 generalise :: Gamma -> Type -> QType
+generalise g t = Ty t 
 generalise g t = error "implement generalse!"
+
 
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
 inferProgram gamma [Bind id Nothing [] expr] = 
@@ -151,12 +153,19 @@ inferExp g (Con c) = do
               where Just qtau = constType c
 inferExp g (Prim p) = do
             t   <- unquantify (qtau)
+            beta <- fresh
             return (Prim p, t, emptySubst)
               where qtau = primOpType p
-inferExp g (Var id) = do
+inferExp g (Var id) = case E.lookup g id of 
+            Just qt -> do
+              t1 <- unquantify qt
+              return (Var id, t1, emptySubst)
+            Nothing -> error "FUCK"
+
+  {-do
             beta <- fresh
             return (Var id, t1, emptySubst)
-              where t1 = TypeVar id
+              where t1 = TypeVar id -}
 inferExp g (App e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
             (e2', t2, s2) <- inferExp g e2
@@ -175,8 +184,8 @@ inferExp g (If e e1 e2) = do
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
             svar            <- unify (TypeVar id) t1
-            (e2', t2, s2)   <- inferExp g e2
-            tfinal          <- unquantify' 0 (s1 <> s2<> svar) (Ty t2)
+            (e2', t2, s2)   <- inferExp (E.add g (id, (generalise g t1))) e2         
+            tfinal          <- unquantify' 0 (s1 <> s2<> svar) (Ty t2) 
             return ((Let [Bind id (Just (Ty t1)) [] e1'] e2'), tfinal, s2<>s1 <> svar) 
 
 
