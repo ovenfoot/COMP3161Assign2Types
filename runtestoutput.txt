@@ -6,7 +6,7 @@ Stdout was:
 
 Running test: zz_more_tests/complex_exprs/ifTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -37,7 +37,7 @@ Stdout was:
 
 Running test: zz_more_tests/polymorphic/ifTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -75,21 +75,21 @@ Stdout was:
 Running test: zz_more_tests/basic_exprs/ifTest1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: zz_more_tests/basic_exprs/ConTest2.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: zz_more_tests/basic_exprs/ConTest3.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: zz_more_tests/basic_exprs/InlTest1.mhs (worth 1) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -107,14 +107,14 @@ Stdout was:
 
 Running test: main_tests/9_examples/0.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/9_examples/1.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -127,7 +127,7 @@ Stdout was:
 
 Running test: main_tests/9_examples/2.mhs (worth 8) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -181,35 +181,35 @@ Stdout was:
 
 Running test: main_tests/8_sums/0_left/0.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/0_left/1.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/1_right/003.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/1_right/001.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/8_sums/1_right/002.mhs (worth 2) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -280,221 +280,16 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun
 
 Stdout was:
 
-Running test: main_tests/5_let/0_simple/003.mhs (worth 7) :-  Stdout Check Failed:
- main :: Bool = let a :: Bool = True;
--               in let b :: Bool = False;
-+               in let b ::  = False;
-                   in if (<) 1 2
-                         then a
-                         else b;
-
+Running test: main_tests/5_let/0_simple/003.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/001.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/5_let/0_simple/004.mhs (worth 7) :-  Stdout Check Failed:
- main :: Int = let a :: Int = 0;
--              in let b :: Int = 2;
--                 in let c :: Int = 3;
--                    in let d :: Int = 4;
--                       in let e :: Int = 5;
--                          in let f :: Int = 6;
--                             in let g :: Int = 7;
--                                in let h :: Int = 8;
--                                   in let i :: Int = 9;
--                                      in let j :: Int = 10;
--                                         in let k :: Int = 11;
--                                            in let l :: Int = 12;
--                                               in let m :: Int = 13;
--                                                  in let n :: Int = 14;
--                                                     in let o :: Int = 15;
--                                                        in let p :: Int = 16;
--                                                           in let q :: Int = 17;
--                                                              in let r :: Int = 18;
--                                                                 in let s :: Int = 19;
--                                                                    in let t :: Int = 20;
--                                                                       in let u :: Int = 21;
--                                                                          in let v :: Int = 22;
--                                                                             in let w :: Int = 23;
--                                                                                in let x :: Int = 24;
--                                                                                   in let y :: Int = 25;
--                                                                                      in let z :: Int = 26;
--                                                                                         in let za :: Int = 26;
--                                                                                            in let zb :: Int = 27;
--                                                                                               in let z1 :: Int = 1;
--                                                                                                  in let z2 :: Int = 2;
--                                                                                                     in let z3 :: Int = 3;
--                                                                                                        in let z4 :: Int = 4;
--                                                                                                           in let z5 :: Int = 5;
--                                                                                                              in let z6 :: Int = 6;
--                                                                                                                 in let z7 :: Int = 7;
--                                                                                                                    in let z8 :: Int = 8;
--                                                                                                                       in let z9 :: Int = 9;
--                                                                                                                          in let z10 :: Int = 10;
--                                                                                                                             in let z11 :: Int = 11;
--                                                                                                                                in let z12 :: Int = 12;
--                                                                                                                                   in let z13 :: Int = 13;
--                                                                                                                                      in let z14 :: Int = 14;
--                                                                                                                                         in let z15 :: Int = 15;
--                                                                                                                                            in let z16 :: Int = 16;
--                                                                                                                                               in let z17 :: Int = 17;
--                                                                                                                                                  in let z18 :: Int = 18;
--                                                                                                                                                     in let z19 :: Int = 19;
--                                                                                                                                                        in let z20 :: Int = 20;
--                                                                                                                                                           in let z21 :: Int = 21;
--                                                                                                                                                              in let z22 :: Int = 22;
--                                                                                                                                                                 in let z23 :: Int = 23;
--                                                                                                                                                                    in let z24 :: Int = 24;
--                                                                                                                                                                       in let z25 :: Int = 25;
--                                                                                                                                                                          in let z26 :: Int = 26;
--                                                                                                                                                                             in let z27 :: Int = 27;
--                                                                                                                                                                                in let z28 :: Int = 28;
--                                                                                                                                                                                   in let z29 :: Int = 29;
--                                                                                                                                                                                      in let z30 :: Int = 30;
--                                                                                                                                                                                         in let z31 :: Int = 31;
--                                                                                                                                                                                            in let z32 :: Int = 32;
--                                                                                                                                                                                               in let z33 :: Int = 33;
--                                                                                                                                                                                                  in let z34 :: Int = 34;
--                                                                                                                                                                                                     in let z35 :: Int = 35;
--                                                                                                                                                                                                        in let z36 :: Int = 36;
--                                                                                                                                                                                                           in let z37 :: Int = 37;
--                                                                                                                                                                                                              in let z38 :: Int = 38;
--                                                                                                                                                                                                                 in let z39 :: Int = 39;
--                                                                                                                                                                                                                    in let z40 :: Int = 40;
--                                                                                                                                                                                                                       in let z41 :: Int = 41;
--                                                                                                                                                                                                                          in let z42 :: Int = 42;
--                                                                                                                                                                                                                             in let z43 :: Int = 43;
--                                                                                                                                                                                                                                in let z44 :: Int = 44;
--                                                                                                                                                                                                                                   in let z45 :: Int = 45;
--                                                                                                                                                                                                                                      in let z46 :: Int = 46;
--                                                                                                                                                                                                                                         in let z47 :: Int = 47;
--                                                                                                                                                                                                                                            in let z48 :: Int = 48;
--                                                                                                                                                                                                                                               in let z49 :: Int = 49;
--                                                                                                                                                                                                                                                  in let z50 :: Int = 50;
--                                                                                                                                                                                                                                                     in let z51 :: Int = 51;
--                                                                                                                                                                                                                                                        in let z52 :: Int = 52;
--                                                                                                                                                                                                                                                           in let z53 :: Int = 53;
--                                                                                                                                                                                                                                                              in let z54 :: Int = 54;
--                                                                                                                                                                                                                                                                 in let z55 :: Int = 55;
--                                                                                                                                                                                                                                                                    in let z56 :: Int = 56;
--                                                                                                                                                                                                                                                                       in let z57 :: Int = 57;
--                                                                                                                                                                                                                                                                          in let z58 :: Int = 58;
--                                                                                                                                                                                                                                                                             in let z59 :: Int = 59;
--                                                                                                                                                                                                                                                                                in let z60 :: Int = 60;
--                                                                                                                                                                                                                                                                                   in let z61 :: Int = 61;
--                                                                                                                                                                                                                                                                                      in let z62 :: Int = 62;
--                                                                                                                                                                                                                                                                                         in let z63 :: Int = 63;
--                                                                                                                                                                                                                                                                                            in let z64 :: Int = 64;
--                                                                                                                                                                                                                                                                                               in let z65 :: Int = 65;
--                                                                                                                                                                                                                                                                                                  in let z66 :: Int = 66;
--                                                                                                                                                                                                                                                                                                     in let z67 :: Int = 67;
--                                                                                                                                                                                                                                                                                                        in let z68 :: Int = 68;
-+              in let b ::  = 2;
-+                 in let c ::  = 3;
-+                    in let d ::  = 4;
-+                       in let e ::  = 5;
-+                          in let f ::  = 6;
-+                             in let g ::  = 7;
-+                                in let h ::  = 8;
-+                                   in let i ::  = 9;
-+                                      in let j ::  = 10;
-+                                         in let k ::  = 11;
-+                                            in let l ::  = 12;
-+                                               in let m ::  = 13;
-+                                                  in let n ::  = 14;
-+                                                     in let o ::  = 15;
-+                                                        in let p ::  = 16;
-+                                                           in let q ::  = 17;
-+                                                              in let r ::  = 18;
-+                                                                 in let s ::  = 19;
-+                                                                    in let t ::  = 20;
-+                                                                       in let u ::  = 21;
-+                                                                          in let v ::  = 22;
-+                                                                             in let w ::  = 23;
-+                                                                                in let x ::  = 24;
-+                                                                                   in let y ::  = 25;
-+                                                                                      in let z ::  = 26;
-+                                                                                         in let za ::  = 26;
-+                                                                                            in let zb ::  = 27;
-+                                                                                               in let z1 ::  = 1;
-+                                                                                                  in let z2 ::  = 2;
-+                                                                                                     in let z3 ::  = 3;
-+                                                                                                        in let z4 ::  = 4;
-+                                                                                                           in let z5 ::  = 5;
-+                                                                                                              in let z6 ::  = 6;
-+                                                                                                                 in let z7 ::  = 7;
-+                                                                                                                    in let z8 ::  = 8;
-+                                                                                                                       in let z9 ::  = 9;
-+                                                                                                                          in let z10 ::  = 10;
-+                                                                                                                             in let z11 ::  = 11;
-+                                                                                                                                in let z12 ::  = 12;
-+                                                                                                                                   in let z13 ::  = 13;
-+                                                                                                                                      in let z14 ::  = 14;
-+                                                                                                                                         in let z15 ::  = 15;
-+                                                                                                                                            in let z16 ::  = 16;
-+                                                                                                                                               in let z17 ::  = 17;
-+                                                                                                                                                  in let z18 ::  = 18;
-+                                                                                                                                                     in let z19 ::  = 19;
-+                                                                                                                                                        in let z20 ::  = 20;
-+                                                                                                                                                           in let z21 ::  = 21;
-+                                                                                                                                                              in let z22 ::  = 22;
-+                                                                                                                                                                 in let z23 ::  = 23;
-+                                                                                                                                                                    in let z24 ::  = 24;
-+                                                                                                                                                                       in let z25 ::  = 25;
-+                                                                                                                                                                          in let z26 ::  = 26;
-+                                                                                                                                                                             in let z27 ::  = 27;
-+                                                                                                                                                                                in let z28 ::  = 28;
-+                                                                                                                                                                                   in let z29 ::  = 29;
-+                                                                                                                                                                                      in let z30 ::  = 30;
-+                                                                                                                                                                                         in let z31 ::  = 31;
-+                                                                                                                                                                                            in let z32 ::  = 32;
-+                                                                                                                                                                                               in let z33 ::  = 33;
-+                                                                                                                                                                                                  in let z34 ::  = 34;
-+                                                                                                                                                                                                     in let z35 ::  = 35;
-+                                                                                                                                                                                                        in let z36 ::  = 36;
-+                                                                                                                                                                                                           in let z37 ::  = 37;
-+                                                                                                                                                                                                              in let z38 ::  = 38;
-+                                                                                                                                                                                                                 in let z39 ::  = 39;
-+                                                                                                                                                                                                                    in let z40 ::  = 40;
-+                                                                                                                                                                                                                       in let z41 ::  = 41;
-+                                                                                                                                                                                                                          in let z42 ::  = 42;
-+                                                                                                                                                                                                                             in let z43 ::  = 43;
-+                                                                                                                                                                                                                                in let z44 ::  = 44;
-+                                                                                                                                                                                                                                   in let z45 ::  = 45;
-+                                                                                                                                                                                                                                      in let z46 ::  = 46;
-+                                                                                                                                                                                                                                         in let z47 ::  = 47;
-+                                                                                                                                                                                                                                            in let z48 ::  = 48;
-+                                                                                                                                                                                                                                               in let z49 ::  = 49;
-+                                                                                                                                                                                                                                                  in let z50 ::  = 50;
-+                                                                                                                                                                                                                                                     in let z51 ::  = 51;
-+                                                                                                                                                                                                                                                        in let z52 ::  = 52;
-+                                                                                                                                                                                                                                                           in let z53 ::  = 53;
-+                                                                                                                                                                                                                                                              in let z54 ::  = 54;
-+                                                                                                                                                                                                                                                                 in let z55 ::  = 55;
-+                                                                                                                                                                                                                                                                    in let z56 ::  = 56;
-+                                                                                                                                                                                                                                                                       in let z57 ::  = 57;
-+                                                                                                                                                                                                                                                                          in let z58 ::  = 58;
-+                                                                                                                                                                                                                                                                             in let z59 ::  = 59;
-+                                                                                                                                                                                                                                                                                in let z60 ::  = 60;
-+                                                                                                                                                                                                                                                                                   in let z61 ::  = 61;
-+                                                                                                                                                                                                                                                                                      in let z62 ::  = 62;
-+                                                                                                                                                                                                                                                                                         in let z63 ::  = 63;
-+                                                                                                                                                                                                                                                                                            in let z64 ::  = 64;
-+                                                                                                                                                                                                                                                                                               in let z65 ::  = 65;
-+                                                                                                                                                                                                                                                                                                  in let z66 ::  = 66;
-+                                                                                                                                                                                                                                                                                                     in let z67 ::  = 67;
-+                                                                                                                                                                                                                                                                                                        in let z68 ::  = 68;
-                                                                                                                                                                                                                                                                                                            in a;
-
+Running test: main_tests/5_let/0_simple/004.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/005.mhs (worth 7) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: implement unify! t1 is -->Arrow (Base Int) (Base Int)<---->Base Int
+minhs-2: implement unify! t1 is -->Base Int<---->Arrow (TypeVar "b") (TypeVar "b")
 
 Stdout was:
 
-Running test: main_tests/5_let/0_simple/002.mhs (worth 7) :-  Stdout Check Failed:
- main :: Int = let x :: Int = 1;
--              in let y :: Int = 2;
-+              in let y ::  = 2;
-                  in (+) x y;
-
+Running test: main_tests/5_let/0_simple/002.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/006.mhs (worth 7) :-  Executable returned non-zero exit code(1).
 Stderr was:
 minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun (Bind "g" Nothing ["x"] (Letfun (Bind "g'" Nothing ["y"] (App (App (Prim Add) (Var "x")) (Var "y")))))
@@ -584,105 +379,105 @@ Running test: main_tests/7_products/0_zero_tuple/0.mhs (worth 1) :-  Stdout Chec
 Running test: main_tests/7_products/0_zero_tuple/1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/7_products/2_mixed_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/2_mixed_two_tuple/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/2_mixed_two_tuple/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/1_two_tuple/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/1_two_tuple/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/1_two_tuple/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/003.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/001.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/004.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/005.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/008.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/006.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/007.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:156:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
+minhs-2: MinHS/TyInfer.hs:158:21-40: Irrefutable pattern failed for pattern MinHS.Syntax.Ty t1
 
 
 Stdout was:
 
 Running test: main_tests/7_products/3_nested_products/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
 Stderr was:
-minhs-2: MinHS/TyInfer.hs:152:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
+minhs-2: MinHS/TyInfer.hs:154:21-46: Irrefutable pattern failed for pattern Data.Maybe.Just (MinHS.Syntax.Ty t1)
 
 
 Stdout was:
@@ -693,4 +488,4 @@ minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Letfun
 
 Stdout was:
 
-Passed 51 out of 122 tests: 41% Correct. Total of 240 marks.
+Passed 54 out of 122 tests: 44% Correct. Total of 261 marks.

@@ -117,8 +117,7 @@ unify (TypeVar v) (t) =  if (elem v (tv t)) then
 unify (t) (TypeVar v) =  if (elem v (tv t)) then
                           typeError (OccursCheckFailed v t)
                         else
-                          return (v =: t)                   
-
+                          return (v =: t)
 --unify _ _ = typeError (MalformedAlternatives)
 unify t1 t2 = error ("implement unify! t1 is -->" ++ (show t1) ++"<---->" ++ (show t2))
 
@@ -141,6 +140,7 @@ inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env
 
 arrowTail:: Type -> TC Type
 arrowTail (Arrow e1 t1) = return t1
+arrowTail (t1) = return t1
 
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
 inferExp g (Num n) = do   
@@ -160,10 +160,11 @@ inferExp g (Var id) = do
               where t1 = TypeVar id
 inferExp g (App e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
+            --g1            <- substGamma s1 g
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
-            t3            <- unquantify (Ty (Arrow t2 alpha))
-            s3            <- unify (substitute (s2<>s1) (t1)) (substitute (s2<>s1) (t3))
+            t3            <- unquantify (Ty (Arrow  t2 alpha))
+            s3            <- unify (substitute (s2<>s1) (t1)) t3
             t4            <- unquantify' 0 (s1<>s2<>s3) (Ty t3)
             tfinal        <- arrowTail(t4)
             --poop          <- runTxxxC(alpha)
@@ -183,7 +184,7 @@ inferExp g (Let [Bind id Nothing [] e1] e2) = do
             svar            <- unify (TypeVar id) t1
             (e2', t2, s2)   <- inferExp g e2
             tfinal          <- unquantify' 0 (s1 <> svar) (Ty t2)
-            return ((Let [Bind id (Just (Ty t1)) [] e1] e2), tfinal, s2<>s1) 
+            return ((Let [Bind id (Just (Ty t1)) [] e1'] e2'), tfinal, s2<>s1) 
 
 
 
