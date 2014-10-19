@@ -160,20 +160,18 @@ inferExp g (Var id) = do
               where t1 = TypeVar id
 inferExp g (App e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
-            --g1            <- substGamma s1 g
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
-            u            <- unify (substitute (s2<>s1) (t1)) (Arrow t2 alpha)
+            u             <- unify (substitute (s2<>s1) (t1)) (Arrow t2 alpha)
             return (App e1' e2', (substitute u alpha), s1 <> s2 <> u)
 
 inferExp g (If e e1 e2) = do
             (e', t, s)    <- inferExp g e
-            s'            <- unify t (Base Bool)
+            u             <- unify t (Base Bool)
             (e1', t1, s1) <- inferExp g e1
             (e2', t2, s2) <- inferExp g e2
-            s3            <- unify (substitute (s2<>s1) (t1)) (substitute (s2<>s1) (t2))
-            tfinal        <- unquantify' 0 (s<>s1<>s2<>s3<>s') (Ty t2)
-            return (If e' e1' e2', tfinal, s<>s1<>s2<>s3<>s')
+            u'            <- unify (substitute (s2<>s1) (t1)) (substitute (s2<>s1) (t2))
+            return (If e' e1' e2', (substitute u' t2), u'<>s2<>s1<>u<>s)
 
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
