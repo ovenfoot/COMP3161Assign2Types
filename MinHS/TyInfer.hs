@@ -165,10 +165,7 @@ inferExp g (App e1 e2) = do
             alpha         <- fresh
             t3            <- unquantify (Ty (Arrow  t2 alpha))
             s3            <- unify (substitute (s2<>s1) (t1)) t3
-            t4            <- unquantify' 0 (s1<>s2<>s3) (Ty t3)
-            tfinal        <- arrowTail(t4)
-            --poop          <- runTxxxC(alpha)
-            return (App e1' e2', tfinal, s1 <> s2 <> s3)
+            return (App e1' e2', (substitute s3 alpha), s1 <> s2 <> s3)
 
 inferExp g (If e e1 e2) = do
             (e', t, s)    <- inferExp g e
