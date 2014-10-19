@@ -183,23 +183,19 @@ inferExp g (If e e1 e2) = do
 
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
-            svar            <- unify (TypeVar id) t1
             (e2', t2, s2)   <- inferExp (E.add g (id, (generalise g t1))) e2         
-            tfinal          <- unquantify' 0 (s1 <> s2<> svar) (Ty t2) 
-            return ((Let [Bind id (Just (Ty t1)) [] e1'] e2'), tfinal, s2<>s1 <> svar) 
+            return ((Let [Bind id (Just (Ty t1)) [] e1'] e2'), t2, s2<>s1) 
 
 
 inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
             alpha1        <- fresh
             alpha2        <- fresh
-            s1            <- unify (TypeVar funId) (alpha1)
-            s2            <- unify (TypeVar varId) (alpha2)
-            (e', t, s)    <- inferExp g e
-            u             <- unify (substitute (s<>s2) alpha2) (Arrow (substitute (s<>s1) alpha1) t)
-            typ           <- unquantify' 0 u (Ty (Arrow (substitute (s<>s1) alpha1) (t) ))
-            return (Letfun (Bind funId (Just (Ty typ)) [varId] e'), 
-                        typ, 
-                        u<>s<>s1<>s2)
+            (e', t, s)    <- inferExp (
+              E.addAll g [(varId, (generalise g alpha1)), 
+                          (funId, (generalise g alpha2) ]) e
+            u             <- unify (substitute (s) alpha2) (Arrow (substitute s alpha1) t)
+            typ           <- unquantify' 0 u (Ty (Arrow (substitute s alpha1) (t) ))
+            return (Letfun (Bind funId (Just (Ty typ)) [varId] e'), typ, u<>s)
             --return (Letfun (Bind funId (Just (Ty (substitute u (Arrow (substitute (s<>s1<>s2) alpha1) t)))) [varId] e'),   (substitute u (Arrow (substitute (s<>s1<>s2) alpha1) t)), u<>s<>s1<>s2)
 inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
 
