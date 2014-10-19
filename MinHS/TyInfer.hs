@@ -144,20 +144,18 @@ arrowTail (t1) = return t1
 
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
 inferExp g (Num n) = do   
-            s <- unify (Base Int) (Base Int)
-            return (Num n, Base Int, s)
+            return (Num n, Base Int, emptySubst)
 inferExp g (Con c) = do   
-            s <- (unify (t1) (t1))
-            return (Con c, t1, s)
-              where Just (Ty t1) = constType c
+            t  <- unquantify (qtau)
+            return (Con c, t, emptySubst)
+              where Just qtau = constType c
 inferExp g (Prim p) = do
-            s <- (unify t1 t1)
-            return (Prim p, t1, s)
-              where Ty t1 = primOpType p
+            t   <- unquantify (qtau)
+            return (Prim p, t, emptySubst)
+              where qtau = primOpType p
 inferExp g (Var id) = do
             beta <- fresh
-            s <- (unify t1 t1)
-            return (Var id, t1, s)
+            return (Var id, t1, emptySubst)
               where t1 = TypeVar id
 inferExp g (App e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
