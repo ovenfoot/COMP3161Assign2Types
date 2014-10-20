@@ -192,7 +192,7 @@ inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
             alpha2        <- fresh
             (e', t, s)    <- inferExp (
               E.addAll g [(varId, (generalise g alpha1)), 
-                          (funId, (generalise g alpha2) ]) e
+                          (funId, (generalise g alpha2)) ]) e
             u             <- unify (substitute (s) alpha2) (Arrow (substitute s alpha1) t)
             typ           <- unquantify' 0 u (Ty (Arrow (substitute s alpha1) (t) ))
             return (Letfun (Bind funId (Just (Ty typ)) [varId] e'), typ, u<>s)
