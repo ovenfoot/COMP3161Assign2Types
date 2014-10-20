@@ -129,8 +129,7 @@ generalise g t = error "implement generalse!"
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
 inferProgram gamma [Bind id Nothing [] expr] = 
     do  (expr', t , s) <-inferExp gamma expr
-        return (
-          ([Bind id (Just (generalise gamma t)) [] (allTypes (substQType s) expr') ]), t, s)
+        return ( ([Bind id (Just (generalise gamma t)) [] (allTypes (substQType s) expr') ]), t, s)
 
 
 inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env) ++ "<--- program is --->" ++ (show bs)) 
