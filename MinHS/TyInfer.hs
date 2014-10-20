@@ -123,8 +123,33 @@ unify t1 t2 = error ("implement unify! t1 is -->" ++ (show t1) ++"<---->" ++ (sh
 
 generalise :: Gamma -> Type -> QType
 generalise g t = Ty t
+--generalise g (Arrow a b) =  generaliseTC g (Arrow a b)
 generalise g t = error "implement generalse!"
 
+generaliseTC::Gamma -> Type -> TC QType
+generaliseTC g (Base b) = return (Ty (Base b))
+generaliseTC g (Arrow a b) = do
+                qa  <- generaliseTC g a
+                qb  <- generaliseTC g b
+                a'  <- unquantify (qa)
+                b'  <- unquantify (qb)
+                return (Ty (Arrow a' b'))
+generaliseTC g (Sum a b) = do
+                qa  <- generaliseTC g a
+                qb  <- generaliseTC g b
+                a'  <- unquantify (qa)
+                b'  <- unquantify (qb)
+                return (Ty (Sum a' b'))
+generaliseTC g (Prod a b) = do
+                qa  <- generaliseTC g a
+                qb  <- generaliseTC g b
+                a'  <- unquantify (qa)
+                b'  <- unquantify (qb)
+                return (Ty (Prod a' b'))
+generaliseTC g (TypeVar id) = case E.lookup g id of 
+            Just qt -> return qt
+            Nothing -> return (Ty (TypeVar id))
+generaliseTC g t = return (Ty t)
 
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
 inferProgram gamma [Bind id Nothing [] expr] = 
@@ -183,8 +208,9 @@ inferExp g (If e e1 e2) = do
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
             (e2', t2, s2)   <- inferExp (E.add g (id, (generalise g t1))) e2
+            t1Final         <- generaliseTC g t1
             return (allTypes (substQType (s2<>s1) ) 
-              (Let [Bind id (Just (generalise g t1)) [] e1'] e2'), 
+              (Let [Bind id (Just (t1Final)) [] e1'] e2'), 
               t2, 
               s2<>s1)
 
@@ -197,8 +223,9 @@ inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
                                         ]) 
                                         e
             u             <- unify (substitute s alpha2) (Arrow (substitute s alpha1) t)
+            tfinal        <- generaliseTC g (substitute u (Arrow (substitute s alpha1) t))
             return (allTypes (substQType (s<>u))
-              (Letfun (Bind funId (Just (generalise g (Arrow alpha1 t))) [varId] e')) , 
+              (Letfun (Bind funId (Just tfinal) [varId] e')) , 
               (substitute u (Arrow (substitute s alpha1) t)), 
               s<>u)
 
