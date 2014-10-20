@@ -8,7 +8,7 @@ Running test: zz_more_tests/advanced_polymorphic/003.mhs (worth 1) :-  Stdout Ch
 -                                                                                                                        in h);
 -                                      in g;
 +main :: (Int -> e -> Int) = let g :: (Int -> e -> Int) = (letfun f :: (Int -> e -> Int) x = if True
-+                                                                                               then let h :: (c -> a) = (letfun g :: (c -> a) y = x);
++                                                                                               then let h :: (e -> Int) = (letfun g :: (e -> Int) y = x);
 +                                                                                                    in h
 +                                                                                               else let h :: (e -> Int) = (letfun g :: (e -> Int) y = (+) x 1);
 +                                                                                                    in h);
@@ -21,25 +21,25 @@ Running test: zz_more_tests/advanced_polymorphic/001.mhs (worth 1) :-  Stdout Ch
 -                                                                                                                   else let h :: forall h. (h -> Int) = (letfun g :: (h -> Int) y = x);
 -                                                                                                                        in h);
 -                                      in g;
-+main :: (Int -> h -> a) = let g :: (Int -> h -> a) = (letfun f :: (Int -> h -> a) x = if (>) x 1
-+                                                                                         then let h :: (f -> a) = (letfun g :: (f -> a) y = x);
-+                                                                                              in h
-+                                                                                         else let h :: (h -> a) = (letfun g :: (h -> a) y = x);
-+                                                                                              in h);
++main :: (Int -> g -> a) = let g :: (Int -> g -> Int) = (letfun f :: (Int -> g -> Int) x = if (>) x 1
++                                                                                             then let h :: (g -> Int) = (letfun g :: (g -> Int) y = x);
++                                                                                                  in h
++                                                                                             else let h :: (g -> Int) = (letfun g :: (g -> Int) y = x);
++                                                                                                  in h);
 +                          in g;
 
 Running test: zz_more_tests/advanced_polymorphic/004.mhs (worth 1) :-  Stdout Check Failed:
 -main :: forall k. (Int -> (k -> Int) * Int) = let g :: forall e. (Int -> (e -> Int) * Int) = (letfun f :: (Int -> (e -> Int) * Int) x = ((letfun h :: (e -> Int) z = x), (+) x 1));
 -                                              in g;
-+main :: (Int -> (e -> Int) * Int) = let g :: (Int -> (e -> Int) * Int) = (letfun f :: (Int -> (e -> Int) * Int) x = ((letfun h :: (e -> a) z = x), (+) x 1));
++main :: (Int -> (e -> Int) * Int) = let g :: (Int -> (e -> Int) * Int) = (letfun f :: (Int -> (e -> Int) * Int) x = ((letfun h :: (e -> Int) z = x), (+) x 1));
 +                                    in g;
 
 Running test: zz_more_tests/advanced_polymorphic/012.mhs (worth 1) :-  Stdout Check Failed:
 -main :: forall g. (Int -> (g -> Int) * Int) = (letfun f :: (Int -> (g -> Int) * Int) x = (let m :: forall e. (e -> Int) = (letfun h :: (e -> Int) m = let z :: Int = x;
 -                                                                                                                                                      in x);
 -                                                                                          in m, (+) x 1));
-+main :: (Int -> (e -> Int) * Int) = (letfun f :: (Int -> (e -> Int) * Int) x = (let m :: (e -> a) = (letfun h :: (e -> a) m = let z :: a = x;
-+                                                                                                                              in x);
++main :: (Int -> (e -> Int) * Int) = (letfun f :: (Int -> (e -> Int) * Int) x = (let m :: (e -> Int) = (letfun h :: (e -> Int) m = let z :: Int = x;
++                                                                                                                                  in x);
 +                                                                                in m, (+) x 1));
 
 Running test: zz_more_tests/polymorphic/ifTest3.mhs (worth 1) :-  Stdout Check Failed:
@@ -50,11 +50,10 @@ Running test: zz_more_tests/polymorphic/ifTest3.mhs (worth 1) :-  Stdout Check F
 +                       then Inl 1
 +                       else Inl 5;
 
-Running test: zz_more_tests/polymorphic/009.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [("f",Ty (TypeVar "b")),("x",Ty (TypeVar "a"))])<--- exp is --->Case (App (Prim Snd) (Var "x")) [Alt "Inl" ["y"] (App (Prim Fst) (Var "x")),Alt "Inr" ["z"] (Var "z")]
-
-Stdout was:
+Running test: zz_more_tests/polymorphic/009.mhs (worth 1) :-  Stdout Check Failed:
+-main :: forall j. forall f. ((j * f + j) -> j) = (letfun f :: ((j * f + j) -> j) x = (case snd x of Inl y -> fst x;
+-                                                                                                    Inr z -> z;));
++Variable a cannot occur in the type (a * f) (occurs check)
 
 Running test: zz_more_tests/polymorphic/005.mhs (worth 1) :-  Stdout Check Failed:
 -main :: forall f. (f -> f) = if True
@@ -63,7 +62,7 @@ Running test: zz_more_tests/polymorphic/005.mhs (worth 1) :-  Stdout Check Faile
 -                                else let g :: forall d. (d -> d) = (letfun f :: (d -> d) x = x);
 -                                     in g;
 +main :: (c -> c) = if True
-+                      then let g :: (a -> a) = (letfun f :: (a -> a) x = x);
++                      then let g :: (c -> c) = (letfun f :: (c -> c) x = x);
 +                           in g
 +                      else let g :: (c -> c) = (letfun f :: (c -> c) x = x);
 +                           in g;
@@ -80,11 +79,11 @@ Running test: zz_more_tests/polymorphic/008.mhs (worth 1) :-  Stdout Check Faile
 -                                                                              else snd x);
 +Variable a cannot occur in the type (a * d) (occurs check)
 
-Running test: zz_more_tests/polymorphic/006.mhs (worth 1) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [("f",Ty (TypeVar "b")),("x",Ty (TypeVar "a"))])<--- exp is --->Case (Var "x") [Alt "Inl" ["z"] (Var "z"),Alt "Inr" ["k"] (Var "k")]
-
-Stdout was:
+Running test: zz_more_tests/polymorphic/006.mhs (worth 1) :-  Stdout Check Failed:
+-main :: forall d. ((d + d) -> d) = (letfun f :: ((d + d) -> d) x = (case x of Inl z -> z;
+-                                                                              Inr k -> k;));
++main :: ((d + d) -> d) = (letfun f :: ((d + d) -> d) x = (case x of Inl z -> z;
++                                                                    Inr k -> k;));
 
 Running test: zz_more_tests/basic_exprs/ifTest1.mhs (worth 1) :-  Stdout Check Passed!
 Running test: zz_more_tests/basic_exprs/ConTest2.mhs (worth 1) :-  Stdout Check Passed!
@@ -102,7 +101,7 @@ Running test: main_tests/9_examples/5.mhs (worth 8) :-  Stdout Check Failed:
  main :: (Int + Int) = let x :: Int = 1;
                        in let y :: Int = 2;
 -                         in let f :: forall a. (a -> a) = (letfun f :: (a -> a) z = z);
-+                         in let f :: (a -> a) = (letfun f :: (a -> a) z = z);
++                         in let f :: (Bool -> Bool) = (letfun f :: (Bool -> Bool) z = z);
                              in if f True
                                    then Inl ((+) x y)
                                    else Inr x;
@@ -115,17 +114,9 @@ Running test: main_tests/9_examples/1.mhs (worth 8) :-  Stdout Check Failed:
 -main :: forall d. forall b. ((Bool + d) + b) = Inl (Inl True);
 +main :: ((Bool + d) + b) = Inl (Inl True);
 
-Running test: main_tests/9_examples/3.mhs (worth 8) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Case (App (Con "Inl") (Num 1)) [Alt "Inl" ["x"] (App (App (Prim Add) (Var "x")) (Num 1)),Alt "Inr" ["y"] (Var "y")]
-
-Stdout was:
-
+Running test: main_tests/9_examples/3.mhs (worth 8) :-  Stdout Check Passed!
 Running test: main_tests/9_examples/2.mhs (worth 8) :-  Stdout Check Passed!
-Running test: main_tests/9_examples/6.mhs (worth 8) :-  Stdout Check Failed:
--main :: Int = (letfun f :: (Int -> Int) x = x) 1;
-+main :: Int = (letfun f :: (a -> a) x = x) 1;
-
+Running test: main_tests/9_examples/6.mhs (worth 8) :-  Stdout Check Passed!
 Running test: main_tests/4_ifthenelse/003.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/4_ifthenelse/001.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/4_ifthenelse/004.mhs (worth 5) :-  Stdout Check Passed!
@@ -155,18 +146,15 @@ Running test: main_tests/1_primops/primops/007.mhs (worth 7) :-  Stdout Check Pa
 Running test: main_tests/1_primops/primops/000.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/1_primops/dividebyzero/000.mhs (worth 1) :-  Stdout Check Passed!
 Running test: main_tests/1_primops/unarynegate/000.mhs (worth 1) :-  Stdout Check Passed!
-Running test: main_tests/8_sums/2_case/002.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Case (App (Con "Inl") (App (App (Con "Pair") (Con "True")) (Num 7))) [Alt "Inl" ["x"] (App (Con "Inr") (Var "x")),Alt "Inr" ["y"] (App (Con "Inl") (Var "y"))]
+Running test: main_tests/8_sums/2_case/002.mhs (worth 5) :-  Stdout Check Failed:
+-main :: forall p. (p + Bool * Int) = let x :: forall b. (b + Bool * Int) = (case Inl ((True, 7)) of Inl x -> Inr x;
+-                                                                                                    Inr y -> Inl y;);
+-                                     in x;
++main :: (d + Bool * Int) = let x :: (d + Bool * Int) = (case Inl ((True, 7)) of Inl x -> Inr x;
++                                                                                Inr y -> Inl y;);
++                           in x;
 
-Stdout was:
-
-Running test: main_tests/8_sums/2_case/000.mhs (worth 5) :-  Executable returned non-zero exit code(1).
-Stderr was:
-minhs-2: Implement inferExp! Gamma is -->Env (fromList [])<--- exp is --->Case (App (Con "Inl") (App (App (Con "Pair") (Num 1)) (Con "True"))) [Alt "Inl" ["x"] (Var "x"),Alt "Inr" ["y"] (Var "y")]
-
-Stdout was:
-
+Running test: main_tests/8_sums/2_case/000.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/8_sums/0_left/0.mhs (worth 2) :-  Stdout Check Failed:
 -main :: forall b. (Int + b) = Inl 1;
 +main :: (Int + b) = Inl 1;
@@ -206,19 +194,19 @@ Running test: main_tests/5_let/2_application/000.mhs (worth 7) :-  Stdout Check 
 Running test: main_tests/5_let/4_partial_application/003.mhs (worth 7) :-  Stdout Check Failed:
 -main :: Int = let f :: forall a. forall c. (a -> c -> a) = (letfun f :: (a -> c -> a) x = (letfun g :: (c -> a) y = x));
 -              in let g :: forall f. (f -> Int) = f 10;
-+main :: Int = let f :: (a -> c -> a) = (letfun f :: (a -> c -> a) x = (letfun g :: (c -> a) y = x));
-+              in let g :: (c -> Int) = f 10;
++main :: Int = let f :: (Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int) x = (letfun g :: (Int -> Int) y = x));
++              in let g :: (Int -> Int) = f 10;
                   in g 3;
 
 Running test: main_tests/5_let/4_partial_application/005.mhs (worth 7) :-  Stdout Check Failed:
  main :: Int = let f :: (Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int) x = (letfun g :: (Int -> Int) y = (*) x ((- y))));
 -              in let z :: forall h. (h -> Int -> Int) = (letfun z :: (h -> Int -> Int) x = f 3);
-+              in let z :: (j -> Int -> Int) = (letfun z :: (j -> Int -> Int) x = f 3);
++              in let z :: (Int -> Int -> Int) = (letfun z :: (Int -> Int -> Int) x = f 3);
                   in z 2 4;
 
 Running test: main_tests/5_let/4_partial_application/002.mhs (worth 7) :-  Stdout Check Failed:
 -main :: Int = let f :: forall a. (a -> Int -> Int) = (letfun f :: (a -> Int -> Int) x = (letfun g :: (Int -> Int) y = (+) y y));
-+main :: Int = let f :: (a -> Int -> Int) = (letfun f :: (a -> Int -> Int) x = (letfun g :: (Int -> Int) y = (+) y y));
++main :: Int = let f :: (Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int) x = (letfun g :: (Int -> Int) y = (+) y y));
                in f 2 3;
 
 Running test: main_tests/5_let/4_partial_application/008.mhs (worth 7) :-  Stdout Check Passed!
@@ -228,17 +216,7 @@ Running test: main_tests/5_let/0_simple/001.mhs (worth 7) :-  Stdout Check Passe
 Running test: main_tests/5_let/0_simple/004.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/005.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/002.mhs (worth 7) :-  Stdout Check Passed!
-Running test: main_tests/5_let/0_simple/006.mhs (worth 7) :-  Stdout Check Failed:
- main :: Int = let plus :: (Int -> Int -> Int) = (letfun g :: (Int -> Int -> Int) x = (letfun g' :: (Int -> Int) y = (+) x y));
-               in let inc :: (Int -> Int) = (letfun g :: (Int -> Int) x = (+) x 1);
-                  in let f :: (Int -> Int) = (letfun f :: (Int -> Int) x = if (==) x 10
-                                                                              then 10
--                                                                             else let y :: Int = f ((+) x 1);
-+                                                                             else let y :: u = f ((+) x 1);
-                                                                                   in plus let z :: Int = 4;
-                                                                                           in inc z y);
-                     in f ((- 1003));
-
+Running test: main_tests/5_let/0_simple/006.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/0_simple/000.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/3_recursion/001.mhs (worth 7) :-  Stdout Check Passed!
 Running test: main_tests/5_let/3_recursion/005.mhs (worth 7) :-  Stdout Check Passed!
@@ -258,20 +236,20 @@ Running test: main_tests/5_let/1_functions/004.mhs (worth 7) :-  Stdout Check Fa
 -                                    in let f :: forall y. (y -> Int) = (letfun f :: (y -> Int) x = (- 9));
 -                                       in let f :: forall a2. (a2 -> Bool) = (letfun f :: (a2 -> Bool) x = True);
 +main :: Bool = let f :: (a -> Int) = (letfun f :: (a -> Int) x = (- 1));
-+               in let f :: (e -> Int) = (letfun f :: (e -> Int) x = (- 2));
-+                  in let f :: (i -> Int) = (letfun f :: (i -> Int) x = (- 3));
-+                     in let f :: (m -> Int) = (letfun f :: (m -> Int) x = (- 4));
-+                        in let f :: (q -> Int) = (letfun f :: (q -> Int) x = (- 5));
-+                           in let f :: (u -> Int) = (letfun f :: (u -> Int) x = (- 6));
-+                              in let f :: (y -> Int) = (letfun f :: (y -> Int) x = (- 7));
-+                                 in let f :: (a3 -> Int) = (letfun f :: (a3 -> Int) x = (- 8));
-+                                    in let f :: (a7 -> Int) = (letfun f :: (a7 -> Int) x = (- 9));
-+                                       in let f :: (a11 -> Bool) = (letfun f :: (a11 -> Bool) x = True);
++               in let f :: (d -> Int) = (letfun f :: (d -> Int) x = (- 2));
++                  in let f :: (g -> Int) = (letfun f :: (g -> Int) x = (- 3));
++                     in let f :: (j -> Int) = (letfun f :: (j -> Int) x = (- 4));
++                        in let f :: (m -> Int) = (letfun f :: (m -> Int) x = (- 5));
++                           in let f :: (p -> Int) = (letfun f :: (p -> Int) x = (- 6));
++                              in let f :: (s -> Int) = (letfun f :: (s -> Int) x = (- 7));
++                                 in let f :: (v -> Int) = (letfun f :: (v -> Int) x = (- 8));
++                                    in let f :: (y -> Int) = (letfun f :: (y -> Int) x = (- 9));
++                                       in let f :: (Int -> Bool) = (letfun f :: (Int -> Bool) x = True);
                                            in f 7;
 
 Running test: main_tests/5_let/1_functions/005.mhs (worth 7) :-  Stdout Check Failed:
 -main :: Int = let f :: forall a. forall c. forall e. forall g. (a -> c -> e -> g -> Int -> Int) = (letfun f :: (a -> c -> e -> g -> Int -> Int) x = (letfun f :: (c -> e -> g -> Int -> Int) x = (letfun f :: (e -> g -> Int -> Int) x = (letfun f :: (g -> Int -> Int) x = (letfun f :: (Int -> Int) x = (*) 2 x)))));
-+main :: Int = let f :: (a -> c -> e -> g -> Int -> Int) = (letfun f :: (a -> c -> e -> g -> Int -> Int) x = (letfun f :: (c -> e -> g -> Int -> Int) x = (letfun f :: (e -> g -> Int -> Int) x = (letfun f :: (g -> Int -> Int) x = (letfun f :: (Int -> Int) x = (*) 2 x)))));
++main :: Int = let f :: (Int -> Int -> Int -> Int -> Int -> Int) = (letfun f :: (Int -> Int -> Int -> Int -> Int -> Int) x = (letfun f :: (Int -> Int -> Int -> Int -> Int) x = (letfun f :: (Int -> Int -> Int -> Int) x = (letfun f :: (Int -> Int -> Int) x = (letfun f :: (Int -> Int) x = (*) 2 x)))));
                in f 0 0 0 0 7;
 
 Running test: main_tests/5_let/1_functions/002.mhs (worth 7) :-  Stdout Check Passed!
@@ -283,7 +261,7 @@ Running test: main_tests/5_let/1_functions/008.mhs (worth 7) :-  Stdout Check Fa
 -                                                                                                                        in h);
 -                                      in g;
 +main :: (Int -> e -> Int) = let g :: (Int -> e -> Int) = (letfun f :: (Int -> e -> Int) x = if True
-+                                                                                               then let h :: (c -> a) = (letfun g :: (c -> a) y = x);
++                                                                                               then let h :: (e -> Int) = (letfun g :: (e -> Int) y = x);
 +                                                                                                    in h
 +                                                                                               else let h :: (e -> Int) = (letfun g :: (e -> Int) y = (+) x 1);
 +                                                                                                    in h);
@@ -321,4 +299,4 @@ Stdout was:
 Running test: main_tests/7_products/3_nested_products/007.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/7_products/3_nested_products/000.mhs (worth 5) :-  Stdout Check Passed!
 Running test: main_tests/6_programs/test.mhs (worth 5) :-  Stdout Check Passed!
-Passed 90 out of 122 tests: 73% Correct. Total of 462 marks.
+Passed 94 out of 122 tests: 77% Correct. Total of 490 marks.

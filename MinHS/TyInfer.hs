@@ -129,7 +129,8 @@ generalise g t = error "implement generalse!"
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
 inferProgram gamma [Bind id Nothing [] expr] = 
     do  (expr', t , s) <-inferExp gamma expr
-        return ([Bind id (Just (Ty t)) [] expr' ], t, s)
+        return (
+          ([Bind id (Just (generalise gamma t)) [] (allTypes (substQType s) expr') ]), t, s)
 
 
 inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env) ++ "<--- program is --->" ++ (show bs)) 
@@ -142,20 +143,20 @@ inferExp g (Num n) = do
 
 inferExp g (Con c) = do   
             t  <- unquantify (qtau)
-            beta  <- fresh
+            --beta  <- fresh
             return (Con c, t, emptySubst)
               where Just qtau = constType c
 
 inferExp g (Prim p) = do
             t     <- unquantify (qtau)
-            beta  <- fresh
+           -- beta  <- fresh
             return (Prim p, t, emptySubst)
               where qtau = primOpType p
 
 inferExp g (Var id) = case E.lookup g id of 
             Just qt -> do
               t1    <- unquantify qt
-              beta  <- fresh
+              --beta  <- fresh
               return (Var id, t1, emptySubst)
             Nothing -> error "Variable not in environment"
 
@@ -201,4 +202,19 @@ inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
               (Letfun (Bind funId (Just (generalise g (Arrow alpha1 t))) [varId] e')) , 
               (substitute u (Arrow (substitute s alpha1) t)), 
               s<>u)
+
+inferExp g (Case e [Alt id1 [x1] e1, Alt id2 [y1] e2]) = do
+            alpha1          <- fresh
+            alpha2          <- fresh
+            (e', t, s)      <- inferExp g e
+            (e1', tl, s1)   <- inferExp (E.add g (x1, (generalise g alpha1))) e1
+            (e2', tr, s2)   <- inferExp (E.add g (y1, (generalise g alpha2))) e2
+            u               <- unify (substitute (s<>s1<>s2) (Sum alpha1 alpha2)) 
+                                      (substitute (s1<>s2) t)
+            u'              <- unify (substitute (s2<>u) tl) (substitute u tr)
+            return (allTypes (substQType (u<>u'))
+                (Case e' [Alt id1 [x1] e1', Alt id2 [y1] e2'] ),
+                substitute (u<>u') tr,
+                u<>u')
+
 inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
