@@ -132,11 +132,6 @@ inferProgram gamma [Bind id Nothing [] expr] =
         return ([Bind id (Just (Ty t)) [] expr' ], t, s)
 
 
---inferProgram env [Bind "main" Nothing [] (Num n)] = return $ (([Bind "main" (Just (Ty (Base Int))) [] (Num n)]), (Base Int), ([("main", Num)]))  
-
-
-
---error("Spotted!")
 inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env) ++ "<--- program is --->" ++ (show bs)) 
 --don't forget to run the result substitution on the entire expression using allTypes from Syntax.hs"
 
@@ -144,28 +139,35 @@ inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
 inferExp g (Num n) = do   
             return (Num n, Base Int, emptySubst)
+
 inferExp g (Con c) = do   
             t  <- unquantify (qtau)
             beta  <- fresh
             return (Con c, t, emptySubst)
               where Just qtau = constType c
+
 inferExp g (Prim p) = do
             t     <- unquantify (qtau)
             beta  <- fresh
             return (Prim p, t, emptySubst)
               where qtau = primOpType p
+
 inferExp g (Var id) = case E.lookup g id of 
             Just qt -> do
               t1    <- unquantify qt
               beta  <- fresh
               return (Var id, t1, emptySubst)
             Nothing -> error "Variable not in environment"
+
 inferExp g (App e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
             u             <- unify (substitute s2 t1) (Arrow t2 alpha)
-            return (App e1' e2', (substitute u alpha), s1 <> s2 <> u)
+            return (allTypes(substQType (s1<>s2<>u)) 
+              (App e1' e2'), 
+              (substitute u alpha), 
+              s1<>s2<>u)
 
 inferExp g (If e e1 e2) = do
             (e', t, s)    <- inferExp g e
@@ -173,20 +175,30 @@ inferExp g (If e e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
             (e2', t2, s2) <- inferExp g e2
             u'            <- unify (substitute s2 t1) (t2)
-            return (If e' e1' e2', (substitute u' t2), u'<>s2<>s1<>u<>s)
+            return (allTypes (substQType (u'<>s2<>s1<>u<>s))
+                      (If e' e1' e2'), 
+                      (substitute u' t2), 
+                      u'<>s2<>s1<>u<>s)
 
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
-            (e2', t2, s2)   <- inferExp (E.add g (id, (generalise g t1))) e2         
-            return ((Let [Bind id (Just (Ty t1)) [] e1'] e2'), t2, s2<>s1) 
-
+            (e2', t2, s2)   <- inferExp (E.add g (id, (generalise g t1))) e2
+            return (allTypes (substQType (s2<>s1) ) 
+              (Let [Bind id (Just (generalise g t1)) [] e1'] e2'), 
+              t2, 
+              s2<>s1)
 
 inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
             alpha1        <- fresh
             alpha2        <- fresh
-            (e', t, s)    <- inferExp (
-              E.addAll g [(varId, (generalise g alpha1)), 
-                          (funId, (generalise g alpha2)) ]) e
-            return (Letfun (Bind funId (Just (Ty (Arrow (substitute s alpha1) (t)))) [varId] e'), (Arrow (substitute s alpha1) (t)), s)
-            --return (Letfun (Bind funId (Just (Ty (substitute u (Arrow (substitute (s<>s1<>s2) alpha1) t)))) [varId] e'),   (substitute u (Arrow (substitute (s<>s1<>s2) alpha1) t)), u<>s<>s1<>s2)
+            (e', t, s)    <- inferExp (E.addAll g [
+                                        (varId, (generalise g alpha1)), 
+                                        (funId, (generalise g alpha2))
+                                        ]) 
+                                        e
+            u             <- unify (substitute s alpha2) (Arrow (substitute s alpha1) t)
+            return (allTypes (substQType (s<>u))
+              (Letfun (Bind funId (Just (generalise g (Arrow alpha1 t))) [varId] e')) , 
+              (substitute u (Arrow (substitute s alpha1) t)), 
+              s<>u)
 inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
