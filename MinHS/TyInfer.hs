@@ -207,7 +207,11 @@ inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
                                         ]) 
                                         e
             u             <- unify (substitute s alpha2) (Arrow (substitute s alpha1) t)
-            tfinal        <- generaliseTC g (substitute u (Arrow (substitute s alpha1) t))
+            tfinal        <- generaliseTC (E.addAll g [
+                                        (varId, (Ty alpha1)), 
+                                        (funId, (Ty alpha2))
+                                        ]) 
+                                  (substitute u (Arrow (substitute s alpha1) t))
             return (allTypes (substQType (s<>u))
               (Letfun (Bind funId (Just tfinal) [varId] e')) , 
               (substitute u (Arrow (substitute s alpha1) t)), 
