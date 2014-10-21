@@ -123,17 +123,13 @@ unify t1 t2 = error ("implement unify! t1 is -->" ++ (show t1) ++"<---->" ++ (sh
 
 generaliseList :: [Id] -> Type -> QType
 generaliseList [] t = Ty t
-generaliseList (x:xs) t  = Forall x (generaliseList xs t) --where
-            --ids = tvQ (Forall x (Ty t))
-
+generaliseList (x:xs) t  = Forall x (generaliseList xs t)
 removeID:: [Id] -> [Id] -> [Id]
 removeID gamma [] = gamma
 removeID gamma (x:xs) = filter (/=x) (removeID gamma xs)
 
 generalise :: Gamma -> Type -> QType
 generalise g t = generaliseList (removeID (tv t) (tvGamma g) ) t
---generalise g t = Forall x (tvQ (generalise g' t)) 
---generalise g (Arrow a b) =  generaliseTC g (Arrow a b)
 generalise g t = error "implement generalse!"
 
 generaliseTC::Gamma -> Type -> TC QType
