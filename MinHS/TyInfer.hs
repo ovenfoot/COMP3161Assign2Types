@@ -17,8 +17,8 @@ primOpType Le   = Ty $ Base Int `Arrow` (Base Int `Arrow` Base Bool)
 primOpType Eq   = Ty $ Base Int `Arrow` (Base Int `Arrow` Base Bool)
 primOpType Ne   = Ty $ Base Int `Arrow` (Base Int `Arrow` Base Bool)
 primOpType Neg  = Ty $ Base Int `Arrow` Base Int
-primOpType Fst  = Forall "t" $ Forall "b" $ Ty $ (TypeVar "a" `Prod` TypeVar "b") `Arrow` TypeVar "a"
-primOpType Snd  = Forall "t" $ Forall "b" $ Ty $ (TypeVar "a" `Prod` TypeVar "b") `Arrow` TypeVar "b"
+primOpType Fst  = Forall "a" $ Forall "b" $ Ty $ (TypeVar "a" `Prod` TypeVar "b") `Arrow` TypeVar "a"
+primOpType Snd  = Forall "a" $ Forall "b" $ Ty $ (TypeVar "a" `Prod` TypeVar "b") `Arrow` TypeVar "b"
 primOpType _    = Ty $ Base Int `Arrow` (Base Int `Arrow` Base Int)
 
 constType :: Id -> Maybe QType
