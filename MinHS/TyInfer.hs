@@ -173,10 +173,11 @@ inferExp g (App e1 e2) = do
             (e2', t2, s2) <- inferExp g e2
             alpha         <- fresh
             u             <- unify (substitute s2 t1) (Arrow t2 alpha)
-            return (allTypes(substQType (s1<>s2<>u)) 
+            return ( 
               (App e1' e2'), 
               (substitute u alpha), 
-              s1<>s2<>u)
+              s1<>s2<>u
+              )
 
 inferExp g (If e e1 e2) = do
             (e', t, s)    <- inferExp g e
@@ -184,19 +185,21 @@ inferExp g (If e e1 e2) = do
             (e1', t1, s1) <- inferExp g e1
             (e2', t2, s2) <- inferExp g e2
             u'            <- unify (substitute s2 t1) (t2)
-            return (allTypes (substQType (u'<>s2<>s1<>u<>s))
+            return (
                       (If e' e1' e2'), 
                       (substitute u' t2), 
-                      u'<>s2<>s1<>u<>s)
+                      u'<>s2<>s1<>u<>s
+                      )
 
 inferExp g (Let [Bind id Nothing [] e1] e2) = do
             (e1', t1, s1)   <- inferExp g e1
             (e2', t2, s2)   <- inferExp (E.add g (id, (generalise g t1))) e2
-            t1Final         <- generaliseTC g t1
-            return (allTypes (substQType (s2<>s1) ) 
+            t1Final         <- generaliseTC (E.add g (id, (generalise g t1))) t1
+            return (
               (Let [Bind id (Just (t1Final)) [] e1'] e2'), 
               t2, 
-              s2<>s1)
+              s2<>s1
+              )
 
 inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
             alpha1        <- fresh
@@ -212,10 +215,11 @@ inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
                                         (funId, (Ty alpha2))
                                         ]) 
                                   (substitute u (Arrow (substitute s alpha1) t))
-            return (allTypes (substQType (s<>u))
+            return (
               (Letfun (Bind funId (Just tfinal) [varId] e')) , 
               (substitute u (Arrow (substitute s alpha1) t)), 
-              s<>u)
+              s<>u
+              )
 
 inferExp g (Case e [Alt id1 [x1] e1, Alt id2 [y1] e2]) = do
             alpha1          <- fresh
@@ -226,9 +230,10 @@ inferExp g (Case e [Alt id1 [x1] e1, Alt id2 [y1] e2]) = do
             u               <- unify (substitute (s<>s1<>s2) (Sum alpha1 alpha2)) 
                                       (substitute (s1<>s2) t)
             u'              <- unify (substitute (s2<>u) tl) (substitute u tr)
-            return (allTypes (substQType (u<>u'))
+            return (
                 (Case e' [Alt id1 [x1] e1', Alt id2 [y1] e2'] ),
                 substitute (u<>u') tr,
-                u<>u')
+                u<>u'
+                )
 
 inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
