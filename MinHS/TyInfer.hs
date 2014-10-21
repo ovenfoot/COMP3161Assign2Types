@@ -127,29 +127,7 @@ generalise g t = Ty t
 generalise g t = error "implement generalse!"
 
 generaliseTC::Gamma -> Type -> TC QType
-generaliseTC g (Base b) = return (Ty (Base b))
-generaliseTC g (Arrow a b) = do
-                qa  <- generaliseTC g a
-                qb  <- generaliseTC g b
-                a'  <- unquantify (qa)
-                b'  <- unquantify (qb)
-                return (Ty (Arrow a' b'))
-generaliseTC g (Sum a b) = do
-                qa  <- generaliseTC g a
-                qb  <- generaliseTC g b
-                a'  <- unquantify (qa)
-                b'  <- unquantify (qb)
-                return (Ty (Sum a' b'))
-generaliseTC g (Prod a b) = do
-                qa  <- generaliseTC g a
-                qb  <- generaliseTC g b
-                a'  <- unquantify (qa)
-                b'  <- unquantify (qb)
-                return (Ty (Prod a' b'))
-generaliseTC g (TypeVar id) = case E.lookup g id of 
-            Just qt -> return qt
-            Nothing -> return (Ty (TypeVar id))
-generaliseTC g t = return (Ty t)
+generaliseTC g t = return $ generalise g t
 
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
 inferProgram gamma [Bind id Nothing [] expr] = 
@@ -218,8 +196,8 @@ inferExp g (Letfun (Bind funId Nothing [varId] e)) = do
             alpha1        <- fresh
             alpha2        <- fresh
             (e', t, s)    <- inferExp (E.addAll g [
-                                        (varId, (generalise g alpha1)), 
-                                        (funId, (generalise g alpha2))
+                                        (varId, (Ty alpha1)), 
+                                        (funId, (Ty alpha2))
                                         ]) 
                                         e
             u             <- unify (substitute s alpha2) (Arrow (substitute s alpha1) t)
@@ -233,8 +211,8 @@ inferExp g (Case e [Alt id1 [x1] e1, Alt id2 [y1] e2]) = do
             alpha1          <- fresh
             alpha2          <- fresh
             (e', t, s)      <- inferExp g e
-            (e1', tl, s1)   <- inferExp (E.add g (x1, (generalise g alpha1))) e1
-            (e2', tr, s2)   <- inferExp (E.add g (y1, (generalise g alpha2))) e2
+            (e1', tl, s1)   <- inferExp (E.add g (x1, (Ty alpha1))) e1
+            (e2', tr, s2)   <- inferExp (E.add g (y1, (Ty alpha2))) e2
             u               <- unify (substitute (s<>s1<>s2) (Sum alpha1 alpha2)) 
                                       (substitute (s1<>s2) t)
             u'              <- unify (substitute (s2<>u) tl) (substitute u tr)
