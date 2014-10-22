@@ -130,7 +130,6 @@ removeID gamma (x:xs) = filter (/=x) (removeID gamma xs)
 
 generalise :: Gamma -> Type -> QType
 generalise g t = generaliseList (removeID (tv t) (tvGamma g) ) t
-generalise g t = error "implement generalse!"
 
 generaliseTC::Gamma -> Type -> TC QType
 generaliseTC g t = return $ generalise g t
