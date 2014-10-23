@@ -121,19 +121,27 @@ unify (t) (TypeVar v) =  if (elem v (tv t)) then
 --unify _ _ = typeError (MalformedAlternatives)
 unify t1 t2 = error ("implement unify! t1 is -->" ++ (show t1) ++"<---->" ++ (show t2))
 
+
+--Implements generalise as per the specification, but taking explicit lists of Ids as the environment
 generaliseList :: [Id] -> Type -> QType
 generaliseList [] t = Ty t
 generaliseList (x:xs) t  = Forall x (generaliseList xs t)
+
+--Helper function to remove entries that occur in the second list from the first list
 removeID:: [Id] -> [Id] -> [Id]
-removeID gamma [] = gamma
-removeID gamma (x:xs) = filter (/=x) (removeID gamma xs)
+removeID l1 [] = l1
+removeID l1 (x:xs) = filter (/=x) (removeID l1 xs)
+
 
 generalise :: Gamma -> Type -> QType
+--Remove tvGamma from tvt and process the reduced list in generaliseList
 generalise g t = generaliseList (removeID (tv t) (tvGamma g) ) t
 
+--Interface to allow use of TCs. Simply calls generalise and returns monad equivalent
 generaliseTC::Gamma -> Type -> TC QType
 generaliseTC g t = return $ generalise g t
 
+--Simply pass program into inferExp. Generalise the return type and process allTypes
 inferProgram :: Gamma -> Program -> TC (Program, Type, Subst)
 inferProgram gamma [Bind id Nothing [] expr] = 
     do  (expr', t , s) <-inferExp gamma expr
@@ -144,6 +152,7 @@ inferProgram env bs = error ("implement inferProgram! Gamma is -->" ++ (show env
 --don't forget to run the result substitution on the entire expression using allTypes from Syntax.hs"
 
 
+--Everything here is implemented as per the specification
 inferExp :: Gamma -> Exp -> TC (Exp, Type, Subst)
 inferExp g (Num n) = do   
             return (Num n, Base Int, emptySubst)
@@ -235,4 +244,3 @@ inferExp g (Case e [Alt id1 [x1] e1, Alt id2 [y1] e2]) = do
                 u<>u'
                 )
 
-inferExp g exp = error ("Implement inferExp! Gamma is -->" ++ (show g) ++ "<--- exp is --->" ++ (show exp))                        
